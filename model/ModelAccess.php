@@ -1,5 +1,5 @@
 <?php
-require_once (File::build_path(array('access', 'Access.php')));
+require_once (File::build_path(array('model', 'Model.php')));
 
 class ModelAccess extends Model{
 
@@ -7,14 +7,14 @@ class ModelAccess extends Model{
     private $user_id;
     protected static $object = "Access";
     protected static $attributs = array ('hunt_id','user_id');
-    protected static $searchKeys = array ('acces');
+    protected static $searchKeys = array ('hunt_id');
 
 
-    function gethunt_id() {
+    function getHunt_Id() {
         return $this->hunt_id;
     }
 
-    function getuser_id() {
+    function getUser_Id() {
         return $this->user_id;
     }
 
@@ -25,10 +25,5 @@ class ModelAccess extends Model{
             $this->user_id = $user_id;
         }
     }
-
 }
-
-
-
-
 ?>

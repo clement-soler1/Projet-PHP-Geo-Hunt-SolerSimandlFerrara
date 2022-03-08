@@ -1,5 +1,5 @@
 <?php
-require_once (File::build_path(array('teams', 'Teams.php')));
+require_once (File::build_path(array('model', 'Model.php')));
 
 class ModelTeams extends Model{
 
@@ -7,14 +7,14 @@ class ModelTeams extends Model{
     private $user_id;
     protected static $object = "Team";
     protected static $attributs = array ('team_id','user_id');
-    protected static $searchKeys = array ('team');
+    protected static $searchKeys = array ('team_id');
 
 
-    function getteam_id() {
+    function getTeam_Id() {
         return $this->team_id;
     }
 
-    function getuser_id() {
+    function getUser_Id() {
         return $this->user_id;
     }
 
@@ -25,10 +25,5 @@ class ModelTeams extends Model{
             $this->user_id = $user_id;
         }
     }
-
 }
-
-
-
-
 ?>
