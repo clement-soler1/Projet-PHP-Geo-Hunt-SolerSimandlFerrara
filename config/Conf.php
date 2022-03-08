@@ -2,10 +2,10 @@
 class Conf {
     //database infos
     static private $databases = array(
-        'hostname' => 'webinfo',
-        'database' => 'solerc',
-        'login' => 'solerc',
-        'password' => 'dj4hIBXutDdj4hIBXutD'
+        'hostname' => 'localhost',
+        'database' => 'geo-hunter',
+        'login' => 'root',
+        'password' => ''
     );
 
     static private $debug = True;
