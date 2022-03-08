@@ -12,6 +12,8 @@ class ModelQuestions extends Model{
     private $user_id;
     protected static $object = "Question";
     protected static $attributs = array ('qu_id','qu_title','qu_text','privacy','lat','long','user_id');
+    protected static $searchKeys = array ('question');
+
 
     function getQu_id() {
         return $this->qu_id;

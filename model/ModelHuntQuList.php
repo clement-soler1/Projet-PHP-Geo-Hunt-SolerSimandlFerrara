@@ -8,6 +8,8 @@ class ModelHuntQuList extends Model{
     private $qu_num;
     protected static $object = "HuntQuList";
     protected static $attributs = array ('qu_id','hunt_id','$qu_num');
+    protected static $searchKeys = array ('huntQuList');
+
 
     function getqu_id() {
         return $this->qu_id;

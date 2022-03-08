@@ -11,6 +11,8 @@ class ModelHunts extends Model{
     private $user_id;
     protected static $object = "Hunt";
     protected static $attributs = array ('hunt_id','hunt_title','privacy','lat','long','user_id');
+    protected static $searchKeys = array ('hunt');
+
 
     function getHunt_id() {
         return $this->hunt_id;

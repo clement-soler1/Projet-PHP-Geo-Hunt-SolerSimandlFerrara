@@ -7,6 +7,8 @@ class ModelAccess extends Model{
     private $user_id;
     protected static $object = "Access";
     protected static $attributs = array ('hunt_id','user_id');
+    protected static $searchKeys = array ('acces');
+
 
     function gethunt_id() {
         return $this->hunt_id;

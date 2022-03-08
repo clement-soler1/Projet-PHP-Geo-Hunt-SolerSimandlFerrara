@@ -7,6 +7,8 @@ class ModelTeams extends Model{
     private $user_id;
     protected static $object = "Team";
     protected static $attributs = array ('team_id','user_id');
+    protected static $searchKeys = array ('team');
+
 
     function getteam_id() {
         return $this->team_id;
