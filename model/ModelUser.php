@@ -3,22 +3,24 @@
 
 class ModelUser extends Model{
     
-    private $login;
+    private $user_id;
+    private $username;
     private $email;
     private $password;
-    private $dateNaissance;
-    private $ville;
-    private $codePostal;
-    private $adresse;
-    private $pays;
-    private $nonce;
+    private $join_date;
+    private $profile_pic;
+    private $description;
     private $admin;
     protected static $object = "User";
-    protected static $attributs = array ('login','email','password','dateNaissance','ville','codePostal','adresse','pays','nonce','admin');
-    protected static $searchKeys = array ('login');
-    
-    function getLogin() {
-        return $this->login;
+    protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin');
+    protected static $searchKeys = array ('username');
+
+    function getUserId() {
+        return $this->user_id;
+    }
+
+    function getUsername(){
+        return $this->username;
     }
 
     function getEmail() {
@@ -29,82 +31,37 @@ class ModelUser extends Model{
         return $this->password;
     }
 
-    function getDateNaissance() {
-        return $this->dateNaissance;
+    function getJoinDate() {
+        return $this->join_date;
     }
 
-    function getVille() {
-        return $this->ville;
+    public function getProfilePic()
+    {
+        return $this->profile_pic;
     }
 
-    function getCodePostal() {
-        return $this->codePostal;
+    public function getDescription()
+    {
+        return $this->description;
     }
 
-    function getAdresse() {
-        return $this->adresse;
-    }
-
-    function getPays() {
-        return $this->pays;
-    }
-
-    function getNonce() {
-        return $this->nonce;
-    }
-    
     function getAdmin() {
         return $this->admin;
     }
-
     
-    // un constructeur
-    public function __construct($login = NULL, $email = NULL,
-        $pwd = NULL, $dob = NULL,$ville = NULL , $cp = NULL, $adr = NULL, $pays = NULL, $nonce = NULL, $admin = NULL) {
-        if (!is_null($login) && !is_null($email) && !is_null($pwd)
-                   && !is_null($dob) && !is_null($ville) && !is_null($cp) && !is_null($adr) && !is_null($pays) && !is_null($nonce) && !is_null($admin)) {
-            $this->login = $login;
+    public function __construct($user_id = NULL, $username = NULL, $email = NULL, $password = NULL, $join_date = NULL, $profile_pic = NULL, $description = NULL, $admin = NULL)
+    {
+        if (!is_null($user_id) && !is_null($username) && !is_null($email) && !is_null($password) && !is_null($join_date) && !is_null($profile_pic) && !is_null($description) && !is_null($admin))
+        {
+            $this->user_id = $user_id;
+            $this->username = $username;
             $this->email = $email;
-            $this->password = $pwd;
-            $this->dateNaissance = $dob;
-            $this->ville = $ville;
-            $this->codePostal = $cp;
-            $this->adresse = $adr;
-            $this->pays = $pays;
-            $this->nonce = $nonce;
+            $this->password = $password;
+            $this->join_date = $join_date;
+            $this->profile_pic = $profile_pic;
+            $this->description = $description;
             $this->admin = $admin;
         }
     }
-    
-    public function verifyPwd($pwd) {
-        return ($this->password == Security::chiffrer($pwd));
-    }
-    
-    public function isVerified() {
-        return ($this->nonce == "verified");
-        
-    }
-    
-    public function setAdmin() {
-        $newAtt = array (
-            "login" => $this->login,
-            "email" => $this->email,
-            "password" => $this->password,
-            "dateNaissance" => $this->dateNaissance,
-            "ville" => $this->ville,
-            "codePostal" => $this->codePostal,
-            "adresse" => $this->adresse,
-            "pays" => $this->pays,
-            "nonce" => $this->nonce,
-            "admin" => 1
-        );
-        $this->update($newAtt);
-    }
-    
-    
 }
-
-
-
-
 ?>
