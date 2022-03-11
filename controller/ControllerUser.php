@@ -8,10 +8,32 @@ class ControllerUser {
     public static function login() {
         $controller='user';
         $view='login';
-        $pagetitle='NoCheat - Connexion';
+        $pagetitle='Geo-Hunt - Log In';
         require File::build_path(array("view","view.php"));  //"redirige" vers la vue
     }
-    
+
+    public static function signup() {
+        $controller='user';
+        $view='signup';
+        $pagetitle='Geo-Hunt - Sign Up';
+        require File::build_path(array("view","view.php"));  //"redirige" vers la vue
+    }
+
+    public static function create() {
+
+
+        $idu = ModelUser::getAvailableId();
+        $user = new ModelUser($idu,$_POST['username'],$_POST['email'],Security::chiffrer($_POST['password']),date("Y-m-d"),"","",false,Security::generateRandomHex());
+
+        $user->save();
+
+
+
+    }
+
+
+
+    /*
     public static function validate() {
         $login = $_GET["login"];
         $nonce = $_GET["nonce"];
@@ -216,7 +238,7 @@ class ControllerUser {
         else {
             ControllerJeu::showError();
         }
-    }
+    }*/
 
 }
 

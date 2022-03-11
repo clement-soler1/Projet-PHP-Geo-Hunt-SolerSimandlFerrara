@@ -194,6 +194,13 @@ class Model {
         
         
     }
+
+    public function getFirstAvailablePK()
+    {
+
+
+        return 0;
+    }
       
 }
   

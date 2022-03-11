@@ -11,11 +11,12 @@ class ModelUser extends Model{
     private $profile_pic;
     private $description;
     private $admin;
+    private $token;
     protected static $object = "User";
-    protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin');
+    protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin','token');
     protected static $searchKeys = array ('username');
 
-    function getUserId() {
+    function getUser_id() {
         return $this->user_id;
     }
 
@@ -31,11 +32,11 @@ class ModelUser extends Model{
         return $this->password;
     }
 
-    function getJoinDate() {
+    function getJoin_date() {
         return $this->join_date;
     }
 
-    public function getProfilePic()
+    public function getProfile_pic()
     {
         return $this->profile_pic;
     }
@@ -48,10 +49,15 @@ class ModelUser extends Model{
     function getAdmin() {
         return $this->admin;
     }
-    
-    public function __construct($user_id = NULL, $username = NULL, $email = NULL, $password = NULL, $join_date = NULL, $profile_pic = NULL, $description = NULL, $admin = NULL)
+
+    public function getToken()
     {
-        if (!is_null($user_id) && !is_null($username) && !is_null($email) && !is_null($password) && !is_null($join_date) && !is_null($profile_pic) && !is_null($description) && !is_null($admin))
+        return $this->token;
+    }
+    
+    public function __construct($user_id = NULL, $username = NULL, $email = NULL, $password = NULL, $join_date = NULL, $profile_pic = NULL, $description = NULL, $admin = NULL, $token = NULL)
+    {
+        if (!is_null($user_id) && !is_null($username) && !is_null($email) && !is_null($password) && !is_null($join_date) && !is_null($profile_pic) && !is_null($description) && !is_null($admin) && !is_null($token))
         {
             $this->user_id = $user_id;
             $this->username = $username;
@@ -61,7 +67,19 @@ class ModelUser extends Model{
             $this->profile_pic = $profile_pic;
             $this->description = $description;
             $this->admin = $admin;
+            $this->token = $token;
         }
+    }
+
+    public static function getAvailableId()
+    {
+        $query = "SELECT getAvailableUser_ID() AS id;";
+        $req = Model::$pdo->prepare($query);
+
+        $req->execute();
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return intval($result["id"]);
+
     }
 }
 ?>

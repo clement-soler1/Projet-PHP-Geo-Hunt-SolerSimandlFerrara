@@ -135,3 +135,16 @@ ALTER TABLE Teams_User ADD CONSTRAINT Teams_Teams_User_fk
         REFERENCES Teams (team_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE;
+
+
+DELIMITER //
+CREATE FUNCTION getAvailableUser_ID ()
+    RETURNS INT
+BEGIN
+    DECLARE id INT;
+    SELECT COALESCE(MIN(u1.user_id+1),1) INTO id
+    FROM User u1 LEFT JOIN User u2 ON u1.user_id+1 = u2.user_id
+    WHERE u2.user_id IS NULL;
+RETURN id;
+END; //
+DELIMITER ;

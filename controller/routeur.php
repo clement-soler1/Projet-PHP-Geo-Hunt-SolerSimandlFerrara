@@ -6,13 +6,13 @@ require_once File::build_path(array("controller","ControllerUser.php"));
 if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
 } else {
-    $action = "readAll";
+    $action = "login";
 }
 
 if (isset($_REQUEST['controller'])) {
     $controller = $_REQUEST['controller'];
 } else {
-    $controller = 'jeu';//basic controlleur a changer
+    $controller = 'user';//basic controlleur a changer
 }
 
 $controller_class = "Controller".ucfirst($controller);
