@@ -1,0 +1,37 @@
+title: Mapbox.js
+url: https://docs.tilestream.net
+api: https://122e4e-mapbox.global.ssl.fastly.net/core
+tileApi: https://api-maps-staging.tilestream.net
+accessToken: pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpZ3BqeDZlcDAwMDBzcmt1YnQ1OTM4cTEifQ.54XwgUSkvlmB7gHW4vWJ3w
+env: staging
+source: docs
+permalink: /:categories/:title/
+baseurl: /mapbox.js
+mapboxjs: v3.3.1
+mapboxjsbase: /mapbox.js/dist
+defaultid: 'mapbox.streets'
+future: true
+plugins:
+- jekyll-sitemap
+
+# This metadata is required on all pages
+defaults:
+  # Set products/services/platforms for every page
+  - scope:
+      path: ""
+    values:
+      products:
+        - Mapbox.js
+      services:
+        - maps
+      platforms:
+        - web
+  # Set contentType conditionally
+  - scope:
+      path: "_posts/examples"
+    values:
+      content_type: "example"
+  - scope:
+      path: "_posts/api"
+    values:
+      content_type: "API"

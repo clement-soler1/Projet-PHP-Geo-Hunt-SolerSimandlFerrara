@@ -23,7 +23,5 @@ class ControllerHunt {
         $pagetitle='piste';
         require File::build_path(array("view","view.php"));
     }
-
-
 }
 ?>
