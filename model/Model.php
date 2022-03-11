@@ -126,7 +126,7 @@ class Model {
         $sql = $sql.";"; 
         $req_prep = Model::$pdo->prepare($sql);
         $values = array();
-        
+
         foreach ($searchKey as $atb) {
             $values[":tag_".$atb] = $params[$atb];
         }
@@ -193,13 +193,6 @@ class Model {
         $req_prep->execute($values);
         
         
-    }
-
-    public function getFirstAvailablePK()
-    {
-
-
-        return 0;
     }
       
 }
