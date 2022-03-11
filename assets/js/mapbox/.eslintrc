@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {
+    "L": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "quotes": [2, "single"]
+  }
+}
