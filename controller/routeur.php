@@ -15,7 +15,7 @@ if (isset($_REQUEST['action'])) {
 if (isset($_REQUEST['controller'])) {
     $controller = $_REQUEST['controller'];
 } else {
-    $controller = 'user';//basic controlleur a changer
+    $controller = 'global';//basic controlleur a changer
 }
 
 $controller_class = "Controller".ucfirst($controller);
@@ -24,14 +24,13 @@ if(class_exists($controller_class)) {
     $tabAction = get_class_methods($controller_class);
     if (!in_array($action, $tabAction)) {
         //si l'action n'existe pas, print error
-        //basic error (404 : action doesn't exist)
-        $controller_class = "ControllerJeu";//basic controlleur a changer
-        $action = "showError";//basic error a changer
+        $controller_class = "ControllerGlobal";//basic controlleur a changer
+        $action = "error";//basic error a changer
     } else {
         $controller_class::$action();
     }
 } else {
-    //ControllerJeu::showError();
+    ControllerGlobal::error();
     //basic error (404 : controller doesn't exist)
 }
  
