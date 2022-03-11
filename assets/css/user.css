@@ -1,0 +1,77 @@
+body {
+    background-color: #475D62;
+}
+
+.titleUsr {
+    width: 100%;
+    text-align: center;
+    padding-top: 2vw;
+    color: white;
+}
+
+#formUser {
+    margin-top: 3vw;
+    padding-bottom: 2vw;
+}
+
+
+.logUser {
+    width: 35%;
+    font-size: 1.1vw;
+    text-align: center;
+    margin: 0;
+}
+
+.admin {
+    padding-left: 5%;
+}
+.adminTxt {
+    padding-left: 4%;
+}
+
+.iconUtility {
+    width: 10%;
+}
+
+.icoUpt {
+    color: green;
+    cursor: pointer;
+}
+
+.icoDlt {
+    color: red;
+    cursor: pointer;
+}
+
+.icoSetAdmin {
+    color: cyan;
+    cursor: pointer;
+}
+
+.user {
+    width: 60vw;
+    height: 2vw;
+    display: flex;
+    flew-direction: row;
+    color: white;
+    margin-left: 20vw;
+    border: 1px solid grey;
+    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 0.7vw;
+}
+
+.iconUtilityTxt {
+    width: 10%;
+    font-size: 1.1vw;
+    text-align: center;
+    margin: 0;
+}
+
+.icopad {
+    margin-left: 3%;
+}
+
+.sa {
+    width: 12%;
+}

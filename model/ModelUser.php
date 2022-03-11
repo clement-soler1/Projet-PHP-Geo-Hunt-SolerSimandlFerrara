@@ -126,5 +126,22 @@ class ModelUser extends Model{
         );
         $this->update($newAtt);
     }
+
+    public function afficher() {
+
+        echo '<div class="user">';
+        if ($this->admin) {
+            echo '<i class="material-icons iconUtility admin">font_download</i>';
+        } else {
+            echo '<i style="visibility: hidden;" class="material-icons iconUtility admin">font_download</i>';
+        }
+
+        echo '<p class="logUser">'. htmlspecialchars($this->username) .'</p>';
+        echo '<p class="logUser">('. htmlspecialchars($this->email) .')</p>';
+        echo '<i class="material-icons iconUtility icoUpt" onclick=\'updateUser("'. htmlspecialchars($this->user_id) .'")\'>create</i>';
+        echo '<i class="material-icons iconUtility icoDlt" onclick=\'deleteUser("'. htmlspecialchars($this->user_id) .'")\'>delete</i>';
+        echo '<i class="material-icons iconUtility icoSetAdmin" onclick=\'setUserAdmin  ("'. htmlspecialchars($this->user_id) .'")\'>font_download</i>';
+        echo '</div>';
+    }
 }
 ?>

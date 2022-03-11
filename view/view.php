@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title><?php echo htmlspecialchars($pagetitle); ?></title>
+        <title><?php if (isset($pagetitle)) {echo htmlspecialchars($pagetitle);} ?></title>
         <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">
@@ -15,8 +15,10 @@
         <main>
             <div class="background">
                 <?php
-                    $filepath = File::build_path(array("view", $controller, "$view.php"));
-                    require $filepath;
+                    if (isset($controller) && isset($view)) {
+                        $filepath = File::build_path(array("view", $controller, "$view.php"));
+                        require $filepath;
+                    }
                 ?>
             </div>
         </main>

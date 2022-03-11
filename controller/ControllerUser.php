@@ -103,6 +103,18 @@ class ControllerUser {
         require File::build_path(array("view","view.php"));  //"redirige" vers la vue
     }
 
+    public static function readAll() {
+        if (/*isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']*/ true) {
+            $tab_usr = ModelUser::selectAll();
+            $controller='user';
+            $view='readAll';
+            $pagetitle='Geo-hunt - Users';
+            require File::build_path(array("view","view.php"));  //"redirige" vers la vue
+        } else {
+            //showError
+        }
+    }
+
     /*
     public static function validate() {
         $login = $_GET["login"];
