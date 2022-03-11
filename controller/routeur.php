@@ -4,6 +4,7 @@
 require_once File::build_path(array("controller","ControllerUser.php"));
 require_once File::build_path(array("controller","ControllerHunt.php"));
 require_once File::build_path(array("controller","ControllerQuestion.php"));
+require_once File::build_path(array("controller","ControllerGlobal.php"));
 
 if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
