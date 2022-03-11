@@ -12,8 +12,9 @@ class ModelUser extends Model{
     private $description;
     private $admin;
     private $token;
+    private $enabled;
     protected static $object = "User";
-    protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin','token');
+    protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin','token','enabled');
     protected static $searchKeys = array ('email');
 
     function getUser_id() {
@@ -54,10 +55,15 @@ class ModelUser extends Model{
     {
         return $this->token;
     }
-    
-    public function __construct($user_id = NULL, $username = NULL, $email = NULL, $password = NULL, $join_date = NULL, $profile_pic = NULL, $description = NULL, $admin = NULL, $token = NULL)
+
+    public function getEnabled()
     {
-        if (!is_null($user_id) && !is_null($username) && !is_null($email) && !is_null($password) && !is_null($join_date) && !is_null($profile_pic) && !is_null($description) && !is_null($admin) && !is_null($token))
+        return $this->enabled;
+    }
+    
+    public function __construct($user_id = NULL, $username = NULL, $email = NULL, $password = NULL, $join_date = NULL, $profile_pic = NULL, $description = NULL, $admin = NULL, $token = NULL, $enabled = NULL)
+    {
+        if (!is_null($user_id) && !is_null($username) && !is_null($email) && !is_null($password) && !is_null($join_date) && !is_null($profile_pic) && !is_null($description) && !is_null($admin) && !is_null($token) && !is_null($enabled))
         {
             $this->user_id = $user_id;
             $this->username = $username;
@@ -68,6 +74,7 @@ class ModelUser extends Model{
             $this->description = $description;
             $this->admin = $admin;
             $this->token = $token;
+            $this->enabled = $enabled;
         }
     }
 

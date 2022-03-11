@@ -23,7 +23,7 @@ class ControllerUser {
 
         $token = Security::generateRandomHex();
         $idu = ModelUser::getAvailableId();
-        $user = new ModelUser($idu,$_POST['username'],$_POST['email'],Security::chiffrer($_POST['password']),date("Y-m-d"),"","",false,$token);
+        $user = new ModelUser($idu,$_POST['username'],$_POST['email'],Security::chiffrer($_POST['password']),date("Y-m-d"),"","",false,$token,1);
 
         $user->save();
 
@@ -39,19 +39,12 @@ class ControllerUser {
         echo $url .'?controller=user&action=validate&usr='. $user->getUsername() . '&token='. $user->getToken();
 
     }
+
     public static function read()
     {
         $controller = 'user';
         $view = 'profile';
         $pagetitle = 'Geo-Hunt - Mon Profil';
-        require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
-    }
-
-    public static function readAll()
-    {
-        $controller = 'user';
-        $view = 'profile';
-        $pagetitle = "Geo-Hunt - Liste d'utilisateur";
         require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
     }
 
