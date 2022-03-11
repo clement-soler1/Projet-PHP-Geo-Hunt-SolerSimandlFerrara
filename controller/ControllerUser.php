@@ -39,6 +39,21 @@ class ControllerUser {
         echo $url .'?controller=user&action=validate&usr='. $user->getUsername() . '&token='. $user->getToken();
 
     }
+    public static function read()
+    {
+        $controller = 'user';
+        $view = 'profile';
+        $pagetitle = 'Geo-Hunt - Mon Profil';
+        require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+    }
+
+    public static function readAll()
+    {
+        $controller = 'user';
+        $view = 'profile';
+        $pagetitle = "Geo-Hunt - Liste d'utilisateur";
+        require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+    }
 
     public static function validate() {
         $username = $_REQUEST['usr'];
