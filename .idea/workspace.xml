@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a598cdd6-fb0f-4a9c-8af5-5135239fbf0e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/view/user/verified.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/user/read-tmp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/ControllerUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ControllerUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/ModelUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/ModelUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/user/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/xampp/htdocs/geohunt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../geohunt" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -40,7 +40,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646984213427</updated>
-      <workItem from="1646984219240" duration="7523000" />
+      <workItem from="1646984219240" duration="9774000" />
     </task>
     <task id="LOCAL-00001" summary="handle account creation">
       <created>1646988676608</created>
@@ -49,7 +49,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646988676608</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="validation de compte de usr">
+      <created>1646992207953</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1646992207953</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -60,6 +67,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="handle account creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="handle account creation" />
+    <MESSAGE value="validation de compte de usr" />
+    <option name="LAST_COMMIT_MESSAGE" value="validation de compte de usr" />
   </component>
 </project>

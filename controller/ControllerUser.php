@@ -53,7 +53,55 @@ class ControllerUser {
         require File::build_path(array("view","view.php"));  //"redirige" vers la vue
     }
 
+    public static function connect() {
+        $login = $_REQUEST['email'];
+        $pwd = $_REQUEST['password'];
 
+        $param['email'] = $login;
+        $user = ModelUser::select($param);
+
+        if (!is_null($user)) {
+
+            $truePwd = $user->verifyPwd($pwd);
+            $verified = $user->isVerified();
+
+            if ($truePwd) {
+
+                if ($verified) {
+                    $_SESSION['user']= $user;
+                    $_SESSION['isAdmin'] = $user->isAdmin();
+                    $_SESSION['login'] = $user->getUsername();
+                    ControllerUser::readTemp();
+                } else {
+                    $dataBack['email'] = $login;
+                    ControllerUser::showLoginError("activation","Ce compte n'est pas vérifié, consultez vos email !",$dataBack);
+                }
+            } else {
+                $dataBack['email'] = $login;
+                ControllerUser::showLoginError("pwd","Mod de passe incorrect",$dataBack);
+            }
+        } else {
+            $dataBack['email'] = $login;
+            ControllerUser::showLoginError("mail","Email incorrect",$dataBack);
+        }
+    }
+
+    public static function showLoginError($type,$message,$data) {
+        $dataBack = $data;
+        $errType = $type;
+        $errMessage = $message;
+        $controller='user';
+        $view='login';
+        $pagetitle='Geo-Hunt - Log In';
+        require File::build_path(array("view","view.php"));  //"redirige" vers la v
+    }
+
+    public static function readTemp() {
+        $controller='user';
+        $view='read-tmp';
+        $pagetitle='Geo-Hunt - Temp';
+        require File::build_path(array("view","view.php"));  //"redirige" vers la vue
+    }
 
     /*
     public static function validate() {

@@ -14,7 +14,7 @@ class ModelUser extends Model{
     private $token;
     protected static $object = "User";
     protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin','token');
-    protected static $searchKeys = array ('username');
+    protected static $searchKeys = array ('email');
 
     function getUser_id() {
         return $this->user_id;
@@ -82,7 +82,7 @@ class ModelUser extends Model{
 
     }
 
-    static function validateUser($username,$token) {
+    public static function validateUser($username,$token) {
 
         try {
             $sql = "UPDATE User SET token='verified' WHERE username=:tag_username AND token=:tag_token;";
@@ -98,6 +98,33 @@ class ModelUser extends Model{
             echo $e->getMessage(); // affiche un message d'erreur
         }
 
+    }
+
+    public function verifyPwd($pwd) {
+        return ($this->password == Security::chiffrer($pwd));
+    }
+
+    public function isVerified() {
+        return ($this->token == "verified");
+    }
+
+    public function isAdmin() {
+        return $this->admin;
+    }
+
+    public function setAdmin() {
+        $newAtt = array (
+            "id" => $this->id,
+            "username" => $this->username,
+            "email" => $this->email,
+            "password" => $this->password,
+            "join_date" => $this->join_date,
+            "profile_pic" => $this->profile_pic,
+            "description" => $this->description,
+            "admin" => 1,
+            "token" => $this->token,
+        );
+        $this->update($newAtt);
     }
 }
 ?>
