@@ -21,14 +21,36 @@ class ControllerUser {
 
     public static function create() {
 
-
+        $token = Security::generateRandomHex();
         $idu = ModelUser::getAvailableId();
-        $user = new ModelUser($idu,$_POST['username'],$_POST['email'],Security::chiffrer($_POST['password']),date("Y-m-d"),"","",false,Security::generateRandomHex());
+        $user = new ModelUser($idu,$_POST['username'],$_POST['email'],Security::chiffrer($_POST['password']),date("Y-m-d"),"","",false,$token);
 
         $user->save();
 
+        $url = 'http://localhost/dev/cnam/Projet-PHP-SolerSimandlFerrara/';
+        $mail = '<h1>Geo-Hunt - Activation du compte</h1></br></br><p>pour activer votre compte, cliquez sur le lien suivant:</p>'.
+            '<a href="'. $url .'?controller=user&action=validate&usr='.
+            $user->getUsername() . '&token='. $user->getToken() .'">Activer !</a>';
+
+        $mail = wordwrap($mail, 70, "\r\n");
+        mail($user->getEmail(), 'Geo-Hunt - Activation', $mail);
+
+        //echo pour valider en local car pa de smtp
+        echo $url .'?controller=user&action=validate&usr='. $user->getUsername() . '&token='. $user->getToken();
+
+    }
+
+    public static function validate() {
+        $username = $_REQUEST['usr'];
+        $token = $_REQUEST['token'];
+
+        ModelUser::validateUser($username, $token);
 
 
+        $controller='user';
+        $view='verified';
+        $pagetitle='Geo-Hunt - Verified';
+        require File::build_path(array("view","view.php"));  //"redirige" vers la vue
     }
 
 

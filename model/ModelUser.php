@@ -81,5 +81,23 @@ class ModelUser extends Model{
         return intval($result["id"]);
 
     }
+
+    static function validateUser($username,$token) {
+
+        try {
+            $sql = "UPDATE User SET token='verified' WHERE username=:tag_username AND token=:tag_token;";
+            $req_prep = Model::$pdo->prepare($sql);
+
+            $values = array(
+                "tag_username" => $username,
+                "tag_token" => $token,
+            );
+            $req_prep->execute($values);
+
+        } catch(PDOException $e) {
+            echo $e->getMessage(); // affiche un message d'erreur
+        }
+
+    }
 }
 ?>
