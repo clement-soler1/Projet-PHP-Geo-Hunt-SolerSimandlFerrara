@@ -1,3 +1,7 @@
+<?php
+//define const
+$MAPBOX_TOKEN = 'pk.eyJ1IjoidGFnZ2VyMDYiLCJhIjoiY2wwbWV5ZzFvMDl5bjNjbnRvcXpydjBmaSJ9.qR8ING20xL9FR5mapnRO3A';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,9 +28,6 @@
                 ?>
             </div>
         </main>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoidGFnZ2VyMDYiLCJhIjoiY2wwbWV5ZzFvMDl5bjNjbnRvcXpydjBmaSJ9.qR8ING20xL9FR5mapnRO3A';
-        </script>
         <footer>
         </footer>
     </body>
