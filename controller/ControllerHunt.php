@@ -1,6 +1,7 @@
 <?php
 
     require_once File::build_path(array("model","ModelHunts.php"));
+    require_once File::build_path(array("model","ModelAttempts.php"));
     
 class ControllerHunt {
 
@@ -21,6 +22,14 @@ class ControllerHunt {
         $controller='hunt';
         $view='huntview';
         $pagetitle='piste';
+        require File::build_path(array("view","view.php"));
+    }
+
+    public static function showHighscore() {
+        $controller='hunt';
+        $view='showHighscore';
+        $pagetitle='piste';
+        $scores = ModelAttempts::getAttemptsOfHunt(1);
         require File::build_path(array("view","view.php"));
     }
 }

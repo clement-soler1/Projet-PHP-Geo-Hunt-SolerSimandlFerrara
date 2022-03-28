@@ -20,15 +20,16 @@ if (isset($_REQUEST['controller'])) {
 
 $controller_class = "Controller".ucfirst($controller);
 
+
 if(class_exists($controller_class)) {
     $tabAction = get_class_methods($controller_class);
     if (!in_array($action, $tabAction)) {
         //si l'action n'existe pas, print error
         $controller_class = "ControllerGlobal";//basic controlleur a changer
         $action = "error";//basic error a changer
-    } else {
-        $controller_class::$action();
     }
+
+    $controller_class::$action();
 } else {
     ControllerGlobal::error();
     //basic error (404 : controller doesn't exist)

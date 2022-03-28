@@ -1,5 +1,5 @@
 .login-dark {
-    height: 100vh;
+    height: calc(100vh - 56px);
     background: #475d62;
     background-size: cover;
     position: relative;
