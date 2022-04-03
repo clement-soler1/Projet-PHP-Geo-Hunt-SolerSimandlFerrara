@@ -194,6 +194,10 @@ class Model {
         
         
     }
+
+    public static function getSearchKeys() {
+        return static::$searchKeys;
+    }
       
 }
   

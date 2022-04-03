@@ -30,7 +30,10 @@ class ControllerHunt {
         $view='showHighscore';
         $pagetitle='piste';
         $scores = ModelAttempts::getAttemptsOfHunt(1);
+        $p_a = ModelAttempts::getPreviousAttemptsOfHuntByUser(1,5);
         require File::build_path(array("view","view.php"));
     }
+
+
 }
 ?>

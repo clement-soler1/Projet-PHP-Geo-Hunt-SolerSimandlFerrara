@@ -54,33 +54,14 @@ class ModelAttempts extends Model{
     public static function getAttemptsOfHunt($hunt_id) {
 
         $table_name = static::$object;
-        //$searchKey = static::$searchKeys;
 
-
-
-        $sql = "SELECT * FROM ".ucfirst($table_name) ." WHERE hunt_id=1 ORDER BY score DESC, attempt_time ASC";
-
-        /*$nbAtt = count($searchKey);
-        $ct = 0;
-
-        foreach ($searchKey as $atb) {
-            $ct = $ct + 1;
-            $tagAtb = ":tag_".$atb;
-            $sql = $sql." ".$atb."=".$tagAtb;
-            if ($ct < $nbAtt) {
-                $sql = $sql." AND";
-            }
-        }*/
+        $sql = "SELECT * FROM ".ucfirst($table_name) ." WHERE hunt_id=:tag_hid ORDER BY score DESC, attempt_time ASC";
 
         $sql = $sql.";";
         $req_prep = Model::$pdo->prepare($sql);
         $values = array();
 
-        /*foreach ($searchKey as $atb) {
-            $values[":tag_".$atb] = $params[$atb];
-        }*/
-        //$values[":tag_hid"] = $hunt_id;
-
+        $values[":tag_hid"] = $hunt_id;
 
         $req_prep->execute($values);
         $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Model'.ucfirst($table_name));
@@ -98,6 +79,32 @@ class ModelAttempts extends Model{
 
     public function displayAttempt() {
         //visuel to do
+    }
+
+    public static function getPreviousAttemptsOfHuntByUser($hunt_id,$user_id) {
+
+        $table_name = static::$object;
+
+        $sql = "SELECT * FROM ".ucfirst($table_name) ." WHERE hunt_id=:tag_hid AND user_id=:tag_uid ORDER BY score DESC, attempt_time ASC";
+
+
+        $sql = $sql.";";
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_hid"] = $hunt_id;
+        $values[":tag_uid"] = $user_id;
+
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Model'.ucfirst($table_name));
+        $obj = $req_prep->fetchAll();
+
+        /*if (sizeof($obj) == 0) {
+            return null;
+        }*/
+
+        return $obj;
     }
 }
 ?>

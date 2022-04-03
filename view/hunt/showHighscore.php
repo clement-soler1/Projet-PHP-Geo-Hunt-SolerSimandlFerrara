@@ -4,6 +4,8 @@
 <?php
 
 var_dump($scores);
+echo '<br><br><br><br>';
+var_dump($p_a);
 
 ?>
 

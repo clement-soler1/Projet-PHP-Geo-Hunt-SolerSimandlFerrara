@@ -40,8 +40,7 @@ class ControllerUser {
 
     }
 
-    public static function read()
-    {
+    public static function read() {
         $controller = 'user';
         $view = 'profile';
         $pagetitle = 'Geo-Hunt - Mon Profil';

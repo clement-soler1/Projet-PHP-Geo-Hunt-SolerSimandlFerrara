@@ -15,7 +15,7 @@ class ModelUser extends Model{
     private $enabled;
     protected static $object = "User";
     protected static $attributs = array ('user_id','username','email','password','join_date','profile_pic','description','admin','token','enabled');
-    protected static $searchKeys = array ('email');
+    protected static $searchKeys = array ('user_id');
 
     function getUser_id() {
         return $this->user_id;
