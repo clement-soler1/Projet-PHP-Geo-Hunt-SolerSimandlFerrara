@@ -6,7 +6,7 @@
 }
 
 .login-dark form {
-    max-width: 320px;
+    max-width: 80vw;
     width: 90%;
     background-color: #1e2833;
     padding: 40px;
@@ -17,6 +17,8 @@
     left: 50%;
     color: #fff;
     box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    flex-direction: row;
+    display: flex;
 }
 
 .login-dark .illustration {
@@ -94,6 +96,6 @@
 
 #map {
     margin: auto;
-    width: 30vh;
-    height: 30vh;
+    width: 60vh;
+    height: 60vh;
 }
