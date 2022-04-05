@@ -1,4 +1,5 @@
 <?php
+    require_once File::build_path(array("controller","ControllerUser.php"));
 
 class ControllerGlobal
 {
@@ -7,6 +8,10 @@ class ControllerGlobal
         $view='error';
         $pagetitle='GeoHunt - Error 404';
         require File::build_path(array("view","view.php"));
+    }
+
+    public static function login() {
+        ControllerUser::login();
     }
 }
 

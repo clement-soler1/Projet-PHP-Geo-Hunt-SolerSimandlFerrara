@@ -25,38 +25,49 @@ if (isset($mvc_args[0])) {
 
 $controller_class = "Controller".ucfirst($controller);
 
-if(class_exists($controller_class)) {
-    $tabAction = get_class_methods($controller_class);
+if (!class_exists($controller_class)) {
+    $controller_class = "ControllerGlobal";
+    $controller = "global";
+}
 
-    $action = "read";
-    if (count($mvc_args) > 1) {
-        //recherche d'une action dans la suite de l'url
-        $action_idx = 0;
-        $action_found = false;
-        $p_action = "";
-        do {
-            $action_idx++;
-            $p_action = $mvc_args[$action_idx];
+$tabAction = get_class_methods($controller_class);
 
-            if (in_array($p_action, $tabAction)) {
-                $action_found = true;
-                $action = $p_action;
-            }
-
-        } while ($action_idx+1 < count($mvc_args) && !$action_found);
+$action = "read";
+if (count($mvc_args) > 1 || $controller_class == "ControllerGlobal") {
+    //recherche d'une action dans la suite de l'url
+    $action_idx = 0;
+    if ($controller_class == "ControllerGlobal") {
+        $action_idx = -1;
     }
+    $action_found = false;
+    $p_action = "";
+    do {
+        $action_idx++;
+        $p_action = $mvc_args[$action_idx];
 
-    if (!in_array($action, $tabAction)) {
-        //si l'action n'existe pas, print error
-        $controller_class = "ControllerGlobal";//basic controlleur a changer
-        $action = "error";//basic error a changer
-    }
+        if (in_array($p_action, $tabAction)) {
+            $action_found = true;
+            $action = $p_action;
+        }
 
+    } while ($action_idx+1 < count($mvc_args) && !$action_found);
+}
+
+if (!in_array($action, $tabAction)) {
+    //si l'action n'existe pas, print error
+    $controller_class = "ControllerGlobal";//basic controlleur a changer
+    $action = "error";//basic error a changer
+}
+
+//args don't work for a global (because no existance in BDD/model
+if ($controller_class != "ControllerGlobal") {
     $args = array_slice($mvc_args,1,$action_idx-1);
     //labelisation des args selon la searchkey en priorite puis arg_x
     $idx = 0;
     $model_class = "Model".ucfirst($controller);
     $skey = $model_class::getSearchKeys();
+
+
 
     for($i = 0; $i < count($args); $i++) {
         $p_name = "args_".$i;
@@ -65,13 +76,9 @@ if(class_exists($controller_class)) {
         }
         $_REQUEST[$p_name] = $args[$i];
     }
-
-
-    $controller_class::$action();
-} else {
-    ControllerGlobal::error();
-    //basic error (404 : controller doesn't exist)
 }
+
+$controller_class::$action();
 
 
 ?>
