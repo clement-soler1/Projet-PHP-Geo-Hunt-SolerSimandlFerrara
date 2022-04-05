@@ -15,8 +15,13 @@ $MAPBOX_TOKEN = 'pk.eyJ1IjoidGFnZ2VyMDYiLCJhIjoiY2wwbWV5ZzFvMDl5bjNjbnRvcXpydjBm
     </head>
     <body>
         <?php
-            $header = File::build_path(array("view", "header.php"));
-            require $header;
+            if (!isset($show_header)) {
+                $show_header = true;
+            }
+            if ($show_header) {
+                $header = File::build_path(array("view", "header.php"));
+                require $header;
+            }
         ?>
         <main>
             <div class="background">
