@@ -44,7 +44,13 @@ class ControllerUser {
         $controller = 'user';
         $view = 'profile';
         $pagetitle = 'Geo-Hunt - Mon Profil';
-        require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+        $usr = ModelUser::select($_REQUEST);
+        if ($usr === null) {
+            echo "This User doesn't exist";
+            //TO DO : create an error user doesn't exist
+        } else {
+            require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+        }
     }
 
     public static function validate() {
