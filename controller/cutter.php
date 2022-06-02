@@ -9,7 +9,6 @@ require_once File::build_path(array("controller","ControllerQuestion.php"));
 require_once File::build_path(array("controller","ControllerGlobal.php"));
 
 //here searching if it's MVC model
-
 $DIR_PATH_ON_SERVER = "/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
 
 $url = $_SERVER['REQUEST_URI'];
@@ -77,6 +76,8 @@ if ($controller_class != "ControllerGlobal") {
         $_REQUEST[$p_name] = $args[$i];
     }
 }
+
+
 
 $controller_class::$action();
 

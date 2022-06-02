@@ -150,5 +150,26 @@ class ModelUser extends Model{
         echo '<i class="material-icons iconUtility icoSetAdmin" onclick=\'setUserAdmin  ("'. htmlspecialchars($this->user_id) .'")\'>font_download</i>';
         echo '</div>';
     }
+
+    public static function getUserByMail($mail) {
+
+
+        $sql = "SELECT * FROM User WHERE email=:tag_mail;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_mail"] = $mail;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUser');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj[0];
+    }
 }
 ?>

@@ -1,5 +1,5 @@
 <main class="profile">
-    <link rel="stylesheet" type="text/css" href="./assets/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("profile.css") ?>">
     <h1 class="profile-title">
         Profile
     </h1>
@@ -58,4 +58,4 @@
             </div>
         </div>
     </div>
-</main><?php
+</main>

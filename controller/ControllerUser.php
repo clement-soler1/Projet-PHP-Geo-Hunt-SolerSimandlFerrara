@@ -70,8 +70,9 @@ class ControllerUser {
         $login = $_REQUEST['email'];
         $pwd = $_REQUEST['password'];
 
-        $param['email'] = $login;
-        $user = ModelUser::select($param);
+        //$param['email'] = $login;
+        //$user = ModelUser::select($param);
+        $user = ModelUser::getUserByMail($login);
 
         if (!is_null($user)) {
 
