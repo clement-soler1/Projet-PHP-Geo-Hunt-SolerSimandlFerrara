@@ -1,6 +1,6 @@
 <?php
 
-$DIR_PATH = "C:/xampp/htdocs/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
+$DIR_PATH = "C:/xampp/htdocs/geohunt/";
 require_once  $DIR_PATH.'lib/File.php';
 
 require_once File::build_path(array("controller","ControllerUser.php"));
