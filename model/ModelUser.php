@@ -121,35 +121,37 @@ class ModelUser extends Model{
 
     public function setAdmin() {
         $newAtt = array (
-            "id" => $this->id,
+            "user_id" => $this->user_id,
             "username" => $this->username,
             "email" => $this->email,
             "password" => $this->password,
             "join_date" => $this->join_date,
             "profile_pic" => $this->profile_pic,
             "description" => $this->description,
-            "admin" => 1,
+            "admin" => !$this->admin,
             "token" => $this->token,
+            "enabled" => $this->enabled
         );
         $this->update($newAtt);
     }
 
     public function afficher() {
 
-        echo '<div class="user">';
+        echo '<div class="user" data-uid="'. htmlspecialchars($this->user_id) .'">';
         if ($this->admin) {
             echo '<i class="material-icons iconUtility admin">font_download</i>';
         } else {
             echo '<i style="visibility: hidden;" class="material-icons iconUtility admin">font_download</i>';
         }
+        //echo $this->user_id;
 
         echo '<p class="logUser">'. htmlspecialchars($this->username) .'</p>';
-        echo '<p class="logUser">('. htmlspecialchars($this->email) .')</p>';
-        echo '<i class="material-icons iconUtility icoUpt" onclick=\'updateUser("'. htmlspecialchars($this->user_id) .'")\'>create</i>';
-        echo '<i class="material-icons iconUtility icoDlt" onclick=\'deleteUser("'. htmlspecialchars($this->user_id) .'")\'>delete</i>';
-        echo '<i class="material-icons iconUtility icoSetAdmin" onclick=\'setUserAdmin  ("'. htmlspecialchars($this->user_id) .'")\'>font_download</i>';
+        echo '<p class="logUser">'. htmlspecialchars($this->email) .'</p>';
+        echo '<i class="material-icons iconUtility icoUpt">create</i>';
+        echo '<i class="material-icons iconUtility icoDlt">delete</i>';
+        echo '<i class="material-icons iconUtility icoSetAdmin">font_download</i>';
         echo '</div>';
-    }
+    }//File::fileDirection("/user/readAll")
 
     public static function getUserByMail($mail) {
 

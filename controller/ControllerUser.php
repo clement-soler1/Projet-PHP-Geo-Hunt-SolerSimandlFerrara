@@ -129,6 +129,36 @@ class ControllerUser {
         }
     }
 
+    public static function delete() {
+        session_start();
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+            $params['user_id'] = intval($_REQUEST['user_id']);
+            $usr = ModelUser::select($params);
+
+            $usr->delete();
+
+            //ControllerUser::readAll();
+            header("LOCATION: ". File::fileDirection("/user/readAll"));
+        } else {
+            ControllerGlobal::error();
+        }
+    }
+
+    public static function setAdmin() {
+        session_start();
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+            $params['user_id'] = intval($_REQUEST['user_id']);
+            $usr = ModelUser::select($params);
+
+            $usr->setAdmin();
+
+            //ControllerUser::readAll();
+            header("LOCATION: ". File::fileDirection("/user/readAll"));
+        } else {
+            ControllerGlobal::error();
+        }
+    }
+
     /*
     public static function validate() {
         $login = $_GET["login"];
@@ -235,31 +265,7 @@ class ControllerUser {
         ControllerJeu::readAll();
     }
     
-    public static function delete() {
-        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
-            $params['login'] = $_REQUEST['login'];
-            $usr = ModelUser::select($params);
 
-            $usr->delete();
-
-            ControllerUser::readAll();
-        } else {
-            ControllerJeu::showError();
-        }
-    }
-    
-    public static function setAdmin() {
-        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
-            $params['login'] = $_REQUEST['login'];
-            $usr = ModelUser::select($params);
-
-            $usr->setAdmin();
-
-            ControllerUser::readAll();
-        } else {
-            ControllerJeu::showError();
-        }
-    }
 
     public static function read() {
         if (isset($_REQUEST['login'])) {

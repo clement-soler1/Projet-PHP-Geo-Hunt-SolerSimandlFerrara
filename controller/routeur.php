@@ -9,7 +9,11 @@ require_once File::build_path(array("controller","ControllerGlobal.php"));
 if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
 } else {
-    $action = "login";
+    if ( isset($_SESSION['user'])) {
+        $action = "login";
+    } else {
+        $action = "login";
+    }
 }
 
 if (isset($_REQUEST['controller'])) {

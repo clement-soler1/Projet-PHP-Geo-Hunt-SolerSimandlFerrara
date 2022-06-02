@@ -23,6 +23,12 @@ class File {
         return $ROOT_FOLDER. $DS . $assets_file;
     }
 
+    public static function fileDirection($route) {
+        //$DS = DIRECTORY_SEPARATOR;
+        //$ROOT_FOLDER = __DIR__ . $DS . "..";
+        return '/dev/cnam/Projet-PHP-SolerSimandlFerrara'.$route;
+    }
+
 }
 ?>
 

@@ -1,17 +1,20 @@
 <header>
     <?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
     if (isset($_SESSION['user'])) {
         echo '
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Geo-Hunt</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -26,21 +29,33 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+                </li>';}
+    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
+        echo '
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Administration
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="'. File::fileDirection("/user/readAll") .'">Utilisateurs</a>
+                        <a class="dropdown-item" href="#">TODO</a>
+                        <a class="dropdown-item" href="#">TODO</a>
+                    </div>
+                </li>';}
+    if (isset($_SESSION['user'])) {
+        echo '
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <button style="margin-left: 1vw" class="btn btn-outline-danger" type="submit">Déconnexion</button>
         </div>
     </nav>';
     } else {
         echo '
         <nav class="navbar navbar-light bg-light">
-          <span class="navbar-brand mb-0 h1">Navbar</span>
+          <span class="navbar-brand mb-0 h1">Geo-Hunt</span>
           <button class="btn btn-outline-success my-2 my-sm-0">Connexion</button>
         </nav>';
     }

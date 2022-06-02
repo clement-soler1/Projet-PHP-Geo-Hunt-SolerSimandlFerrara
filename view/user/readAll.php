@@ -1,14 +1,18 @@
 
-<link rel="stylesheet" type="text/css" href="./assets/css/user.css">
+<link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("user.css") ?>">
+
 
 
 <h1 class="titleUsr">Utilisateurs</h1>
+<div style="width: 30%; margin-left: 35%;margin-top: 2vw;">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search Username" aria-label="Search">
+</div>
 
 <div id="formUser">
     <div class="user">
         <p class="iconUtilityTxt adminTxt">Admin</p>
         <p class="logUser">Username</p>
-        <p class="logUser">(email)</p>
+        <p class="logUser">email</p>
         <p class="iconUtilityTxt icopad">Edit</p>
         <p class="iconUtilityTxt icopad">Delete</p>
         <p class="iconUtilityTxt icopad sa">Set Admin</p>
@@ -23,3 +27,22 @@
 ?>
 
 </div>
+
+<script>
+    let del_link = "<?php echo File::fileDirection("/user/%_%/delete") ?>";
+    let sa_link = "<?php echo File::fileDirection("/user/%_%/setAdmin") ?>";
+    $(document).ready(() => {
+        $(".icoDlt").off("click").on("click", (e) => {
+            if (confirm("Etes_vous sur de vouloir supprimer cet utilisateur ?") == true) {
+                let id = e.target.parentElement.dataset["uid"];
+
+                location.href = del_link.replaceAll("%_%", id);
+            }
+        });
+        $(".icoSetAdmin").off("click").on("click", (e) => {
+            let id = e.target.parentElement.dataset["uid"];
+
+            location.href = sa_link.replaceAll("%_%",id);
+        });
+    });
+</script>

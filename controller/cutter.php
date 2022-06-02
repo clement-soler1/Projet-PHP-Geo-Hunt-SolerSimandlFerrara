@@ -1,5 +1,12 @@
 <?php
 
+/* A check pour mettre ce fonctionnement dans le htacces
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+ */
+
 $DIR_PATH = "C:/xampp/htdocs/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
 require_once  $DIR_PATH.'lib/File.php';
 
