@@ -9,7 +9,10 @@
                 <p style="margin-right: 15vh;margin-bottom: 0.5rem">piste privée :</p>
                 <input type="checkbox" name="privacy" placeholder="privacy">
             </div>
-            <p>début de piste :</p>
+                <p style="margin-right: 15vh">début de piste :</p>
+                <P>lat : </P>
+                <P>long : </P>
+
             <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Create</button></div>
             <a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>
             <input type="hidden" name="action" value="create">
@@ -25,11 +28,11 @@
             this.marker.setLngLat(coordinates).addTo(this.map);
         }
         mapboxgl.accessToken = '<?php echo $MAPBOX_TOKEN;?>';
-        const map = new mapboxgl.Map({
+        this.map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/mapbox/streets-v11', // style URL
-            center: [-74.5, 40], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+            center: [6.0209, 43.1372], // starting position [lng, lat]
+            zoom: 13, // starting zoom
             attributionControl: false
         });
         marker = new mapboxgl.Marker();
