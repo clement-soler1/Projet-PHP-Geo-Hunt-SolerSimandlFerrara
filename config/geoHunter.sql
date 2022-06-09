@@ -160,3 +160,15 @@ WHERE h2.hunt_id IS NULL;
 RETURN id;
 END; //
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION getAvailableTeam_ID ()
+    RETURNS INT
+BEGIN
+    DECLARE id INT;
+SELECT COALESCE(MIN(t1.team_id+1),1) INTO id
+FROM Teams t1 LEFT JOIN Teams t2 ON t1.team_id+1 = t2.team_id
+WHERE t2.team_id IS NULL;
+RETURN id;
+END; //
+DELIMITER ;

@@ -1,0 +1,90 @@
+* {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    background-color: #475D62;
+}
+
+h1 {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+#team_create {
+    margin-top: 50px;
+    width: 26vw;
+    margin-left: calc(50% - 13vw);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+input {
+    color: black;
+}
+
+#formTeam {
+    margin-top: 3vw;
+    padding-bottom: 2vw;
+}
+
+
+.logTeam {
+    width: 50%;
+    font-size: 1.1vw;
+    text-align: center;
+    margin: 0;
+}
+
+.admin {
+    padding-left: 5%;
+}
+.adminTxt {
+    padding-left: 4%;
+    width: 20% !important;
+}
+
+.iconUtility {
+    width: 10%;
+}
+
+.icoUpt {
+    color: green;
+    cursor: pointer;
+}
+
+.icoDlt {
+    color: red;
+    cursor: pointer;
+}
+
+.icoSetAdmin {
+    color: cyan;
+    cursor: pointer;
+}
+
+.team {
+    width: 60vw;
+    height: 2vw;
+    display: flex;
+    flew-direction: row;
+    color: white;
+    margin-left: 20vw;
+    border: 1px solid grey;
+    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 0.7vw;
+}
+
+.iconUtilityTxt {
+    width: 10%;
+    font-size: 1.1vw;
+    text-align: center;
+    margin: 0;
+}
+
+.icopad {
+    margin-left: 3%;
+}

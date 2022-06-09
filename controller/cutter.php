@@ -15,6 +15,7 @@ require_once File::build_path(array("controller","ControllerUser.php"));
 require_once File::build_path(array("controller","ControllerHunt.php"));
 require_once File::build_path(array("controller","ControllerQuestion.php"));
 require_once File::build_path(array("controller","ControllerGlobal.php"));
+require_once File::build_path(array("controller","ControllerTeams.php"));
 
 //here searching if it's MVC model
 //$DIR_PATH_ON_SERVER = "/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
