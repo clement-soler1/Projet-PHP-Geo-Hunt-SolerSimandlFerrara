@@ -27,7 +27,8 @@ class ControllerUser {
 
         $user->save();
 
-        $url = 'http://localhost/dev/cnam/Projet-PHP-SolerSimandlFerrara/';
+        $url = 'http://' . $_SERVER['HTTP_HOST'] . File::$localPath . '/';
+
         $mail = '<h1>Geo-Hunt - Activation du compte</h1></br></br><p>pour activer votre compte, cliquez sur le lien suivant:</p>'.
             '<a href="'. $url .'?controller=user&action=validate&usr='.
             $user->getUsername() . '&token='. $user->getToken() .'">Activer !</a>';
