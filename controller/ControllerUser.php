@@ -110,13 +110,6 @@ class ControllerUser {
         require File::build_path(array("view","view.php"));  //"redirige" vers la v
     }
 
-    public static function readTemp() {
-        $controller='user';
-        $view='read-tmp';
-        $pagetitle='Geo-Hunt - Temp';
-        require File::build_path(array("view","view.php"));  //"redirige" vers la vue
-    }
-
     public static function readAll() {
         if (/*isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']*/ true) {
             $tab_usr = ModelUser::selectAll();

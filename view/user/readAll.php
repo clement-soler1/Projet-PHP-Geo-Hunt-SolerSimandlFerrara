@@ -5,7 +5,7 @@
 
 <h1 class="titleUsr">Utilisateurs</h1>
 <div style="width: 30%; margin-left: 35%;margin-top: 2vw;">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search Username" aria-label="Search">
+    <input id="usr-search" class="form-control mr-sm-2" type="search" placeholder="Search Username" aria-label="Search">
 </div>
 
 <div id="formUser">
@@ -43,6 +43,28 @@
             let id = e.target.parentElement.dataset["uid"];
 
             location.href = sa_link.replaceAll("%_%",id);
+        });
+
+
+        $("#usr-search").off("input").on("input", (e) => {
+            let searchTerm = e.target.value.toLowerCase();
+
+            let users = $(".user:not(:first-child)");
+            users.each((i) => {
+                let val = $(users[i]).children(".logUser").map(function() {
+                    return $(this)[0].innerText;
+                }).toArray();
+
+                let isIn = val[0].toLowerCase().includes(searchTerm) || val[1].toLowerCase().includes(searchTerm);
+
+                if (isIn) {
+                    $(users[i]).show();
+                } else {
+                    $(users[i]).hide();
+                }
+
+
+            })
         });
     });
 </script>

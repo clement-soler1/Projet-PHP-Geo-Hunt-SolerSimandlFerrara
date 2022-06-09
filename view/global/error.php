@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./assets/css/error.css">
+<link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("error.css") ?>">
 
     <div class="container errsize">
         <div class="row">
@@ -321,7 +321,7 @@
 
 <div id="ctnrrethome" class="container">
     <div class="col-md-12 text-center">
-        <form action="">
+        <form action="<?php echo File::build_path(array("index.php")) ?>">
             <button type="submit" class="btn btn-light centerBtn">Retour à l'Acceuil</button>
         </form>
     </div>

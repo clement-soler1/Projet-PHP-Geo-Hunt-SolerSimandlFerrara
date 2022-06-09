@@ -20,6 +20,13 @@ class ControllerGlobal
         $pagetitle='GeoHunt - Landing';
         require File::build_path(array("view","view.php"));
     }
+
+    public static function accesForbidden() {
+        $controller='global';
+        $view='accesForbidden';
+        $pagetitle='GeoHunt - Error 403';
+        require File::build_path(array("view","view.php"));
+    }
 }
 
 ?>
