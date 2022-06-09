@@ -49,14 +49,18 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <button style="margin-left: 1vw" class="btn btn-outline-danger" type="submit">Déconnexion</button>
+            <form method="post" action="'. File::fileDirection("/user/disconnect") .'">
+                <button style="margin-left: 1vw" class="btn btn-outline-danger" >Déconnexion</button>
+            </form>
         </div>
     </nav>';
     } else {
         echo '
         <nav class="navbar navbar-light bg-light">
           <span class="navbar-brand mb-0 h1">Geo-Hunt</span>
-          <button class="btn btn-outline-success my-2 my-sm-0">Connexion</button>
+          <form method="post" action="'. File::fileDirection("/global/login") .'">
+            <button class="btn btn-outline-success my-2 my-sm-0">Connexion</button>
+          </form>
         </nav>';
     }
     ?>

@@ -10,9 +10,9 @@ if (isset($_REQUEST['action'])) {
     $action = $_REQUEST['action'];
 } else {
     if ( isset($_SESSION['user'])) {
-        $action = "login";
+        $action = "landing";
     } else {
-        $action = "login";
+        $action = "landing";
     }
 }
 

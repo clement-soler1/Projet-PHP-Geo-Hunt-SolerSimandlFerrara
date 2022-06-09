@@ -85,7 +85,8 @@ class ControllerUser {
                     $_SESSION['user']= $user;
                     $_SESSION['isAdmin'] = $user->isAdmin();
                     $_SESSION['login'] = $user->getUsername();
-                    ControllerUser::readTemp();
+                    //redirection sur le profil de l'utilisateur
+                    header("LOCATION: ". File::fileDirection("/user/".$user->getUser_id()."/read"));
                 } else {
                     $dataBack['email'] = $login;
                     ControllerUser::showLoginError("activation","Ce compte n'est pas vérifié, consultez vos email !",$dataBack);
@@ -150,6 +151,17 @@ class ControllerUser {
         } else {
             ControllerGlobal::error();
         }
+    }
+
+    public static function disconnect() {
+        session_start();
+
+        //destruction de la session
+        session_unset();
+        session_destroy();
+        setcookie(session_name(),'',time()-1);
+
+        header("LOCATION: ". File::fileDirection("/"));
     }
 
     /*

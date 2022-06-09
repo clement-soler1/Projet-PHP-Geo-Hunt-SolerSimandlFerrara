@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="./assets/css/login.css">
+<link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("login.css") ?>">
 <section class="login-dark">
-    <form method="post" action="./index.php?action=connect&controller=user">
+    <form method="post" action="<?php echo File::fileDirection("/") ?>index.php?action=connect&controller=user">
         <h2 class="visually-hidden">Login Form</h2>
         <?php
             if (isset($errMessage)) {
