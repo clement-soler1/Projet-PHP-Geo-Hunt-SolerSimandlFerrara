@@ -44,10 +44,6 @@ body {
 
 .full-screen {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     background: url(https://www.popsci.com/uploads/2020/06/05/3NIEQB3SFVCMNHH6MHZ42FO6PA.jpg);
     background-size: cover;
     background-position: center;
