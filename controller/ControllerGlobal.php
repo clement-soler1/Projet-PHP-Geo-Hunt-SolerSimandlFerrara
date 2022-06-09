@@ -13,6 +13,13 @@ class ControllerGlobal
     public static function login() {
         ControllerUser::login();
     }
+
+    public static function landing() {
+        $controller='global';
+        $view='landing';
+        $pagetitle='GeoHunt - Landing';
+        require File::build_path(array("view","view.php"));
+    }
 }
 
 ?>
