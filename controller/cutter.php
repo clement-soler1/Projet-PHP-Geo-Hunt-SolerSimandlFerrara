@@ -7,7 +7,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
  */
 
-$DIR_PATH = "C:/xampp/htdocs/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
+//$DIR_PATH = "C:/xampp/htdocs/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
+$DIR_PATH = getcwd() . "/../";
 require_once  $DIR_PATH.'lib/File.php';
 
 require_once File::build_path(array("controller","ControllerUser.php"));
@@ -16,7 +17,8 @@ require_once File::build_path(array("controller","ControllerQuestion.php"));
 require_once File::build_path(array("controller","ControllerGlobal.php"));
 
 //here searching if it's MVC model
-$DIR_PATH_ON_SERVER = "/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
+//$DIR_PATH_ON_SERVER = "/dev/cnam/Projet-PHP-SolerSimandlFerrara/";
+$DIR_PATH_ON_SERVER = File::$localPath . "/";
 
 $url = $_SERVER['REQUEST_URI'];
 $left_url = substr($url,strlen($DIR_PATH_ON_SERVER));

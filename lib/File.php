@@ -2,6 +2,7 @@
 
 class File {
 
+    public static $localPath = '/dev/cnam/Projet-PHP-SolerSimandlFerrara';
 
     public static function build_path($path_array) {
         $DS = DIRECTORY_SEPARATOR;
@@ -12,21 +13,21 @@ class File {
     public static function cssFilePath($css_file) {
         $DS = DIRECTORY_SEPARATOR;
         //$ROOT_FOLDER = __DIR__ . $DS . "..";
-        $ROOT_FOLDER = 'http://' . $_SERVER['HTTP_HOST'] . '/dev/cnam/Projet-PHP-SolerSimandlFerrara' . '/assets';
+        $ROOT_FOLDER = 'http://' . $_SERVER['HTTP_HOST'] . File::$localPath . '/assets';
         return $ROOT_FOLDER . $DS . "css" . $DS . $css_file;
     }
 
     public static function assetsFilePath($assets_file) {
         $DS = DIRECTORY_SEPARATOR;
         //$ROOT_FOLDER = __DIR__ . $DS . "..";
-        $ROOT_FOLDER = 'http://' . $_SERVER['HTTP_HOST'] . '/dev/cnam/Projet-PHP-SolerSimandlFerrara' . '/assets';
+        $ROOT_FOLDER = 'http://' . $_SERVER['HTTP_HOST'] . File::$localPath . '/assets';
         return $ROOT_FOLDER. $DS . $assets_file;
     }
 
     public static function fileDirection($route) {
         //$DS = DIRECTORY_SEPARATOR;
         //$ROOT_FOLDER = __DIR__ . $DS . "..";
-        return '/dev/cnam/Projet-PHP-SolerSimandlFerrara'.$route;
+        return (File::$localPath . $route);
     }
 
 }
