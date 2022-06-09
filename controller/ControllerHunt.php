@@ -2,12 +2,17 @@
 
     require_once File::build_path(array("model","ModelHunts.php"));
     require_once File::build_path(array("model","ModelAttempts.php"));
+    require_once File::build_path(array("model","ModelUser.php"));
     
 class ControllerHunt {
 
     public static function create() {
-        $hunt = new ModelHunts(-1,$_REQUEST['hunt_title'],$_REQUEST['privacy'],$_REQUEST['lat'],$_REQUEST['lon'],"");
-        var_dump($hunt);
+
+        $usr = unserialize($_SESSION["user"]);
+        var_dump($usr);
+        $idh = ModelHunts::getAvailableId();
+        $hunt = new ModelHunts($idh,$_POST['hunt_title'],isset($_POST['privacy']),$_POST['lat'],$_POST['lon'],$usr->getUser_id());
+
         $hunt->save();
     }
 

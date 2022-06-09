@@ -83,7 +83,7 @@ class ControllerUser {
             if ($truePwd) {
 
                 if ($verified) {
-                    $_SESSION['user']= $user;
+                    $_SESSION['user']= serialize($user);
                     $_SESSION['isAdmin'] = $user->isAdmin();
                     $_SESSION['login'] = $user->getUsername();
                     //redirection sur le profil de l'utilisateur

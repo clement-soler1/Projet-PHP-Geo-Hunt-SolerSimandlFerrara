@@ -148,3 +148,15 @@ BEGIN
 RETURN id;
 END; //
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION getAvailableHunt_ID ()
+    RETURNS INT
+BEGIN
+    DECLARE id INT;
+SELECT COALESCE(MIN(h1.hunt_id+1),1) INTO id
+FROM Hunts h1 LEFT JOIN Hunts h2 ON h1.hunt_id+1 = h2.hunt_id
+WHERE h2.hunt_id IS NULL;
+RETURN id;
+END; //
+DELIMITER ;

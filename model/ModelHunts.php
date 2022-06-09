@@ -9,7 +9,7 @@ class ModelHunts extends Model{
     private $lat;
     private $lon;
     private $user_id;
-    protected static $object = "Hunt";
+    protected static $object = "Hunts";
     protected static $attributs = array ('hunt_id','hunt_title','privacy','lat','lon','user_id');
     protected static $searchKeys = array ('hunt_title');
 
@@ -50,6 +50,17 @@ class ModelHunts extends Model{
             $this->lon = $lon;
             $this->user_id = $user_id;
         }
+    }
+
+    public static function getAvailableId()
+    {
+        $query = "SELECT getAvailableHunt_ID() AS id;";
+        $req = Model::$pdo->prepare($query);
+
+        $req->execute();
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return intval($result["id"]);
+
     }
 }
 ?>
