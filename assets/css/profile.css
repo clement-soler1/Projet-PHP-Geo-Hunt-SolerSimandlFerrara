@@ -21,7 +21,7 @@ p,h1,body {
 .profile-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 750px;
 }
 .profile {
     margin: 0 auto;
@@ -70,21 +70,26 @@ p,h1,body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 32px 0;
+    padding: 16px 0;
     margin: 24px 0;
     width: 100%;
     background-color: #1E2833;
 }
 .info {
     padding: 8px 0;
-    margin: 0 auto;
-    width: 240px;
+    margin: auto;
+    width: 300px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 }
 .title {
     text-transform: uppercase;
+    width: 400px;
+
+}
+.description {
+    width: 200px;
 }
 
 

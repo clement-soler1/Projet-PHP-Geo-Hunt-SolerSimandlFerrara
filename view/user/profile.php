@@ -1,3 +1,7 @@
+<?php
+$usr=unserialize($_SESSION['user']);
+
+?>
 <main class="profile">
     <link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("profile.css") ?>">
     <h1 class="profile-title">
@@ -10,51 +14,35 @@
             </div>
             <div class="user-info">
                 <p class="user-name">
-                    Alex M.
+                    <?php echo $usr->getUsername() ;?>
                 </p>
-                <div class="user-subinfo">
-                    <p class="user-class">
-                        Master
-                    </p>
-                    <div class="separator vertical"></div>
-                    <p class="user-level">
-                        22lvl
-                    </p>
-                </div>
             </div>
         </div>
         <div class="info-container">
             <div class="info">
                 <div class="title">
-                    Current place:
+                    Date d'inscription :
                 </div>
                 <div class="description">
-                    1st
+                    <?php echo $usr->getJoin_Date() ;?>
                 </div>
             </div>
             <div class="info">
                 <div class="title">
-                    Quests:
+                    Email :
                 </div>
                 <div class="description">
-                    98/120
+                    <?php echo $usr->getEmail() ;?>
                 </div>
             </div>
             <div class="info">
                 <div class="title">
-                    Achievements:
+                    Description :
                 </div>
                 <div class="description">
-                    42/50
                 </div>
-            </div>
-            <div class="info">
-                <div class="title">
-                    Friends online:
-                </div>
-                <div class="description">
-                    5/16
-                </div>
+                <?php echo $usr->getDescription() ;?>
+
             </div>
         </div>
     </div>
