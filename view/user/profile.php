@@ -1,5 +1,5 @@
 <?php
-$usr=unserialize($_SESSION['user']);
+//$usr=unserialize($_SESSION['user']);
 
 ?>
 <main class="profile">

@@ -45,12 +45,26 @@ class ControllerUser {
         $controller = 'user';
         $view = 'profile';
         $pagetitle = 'Geo-Hunt - Mon Profil';
-        $usr = ModelUser::select($_REQUEST);
-        if ($usr === null) {
-            echo "This User doesn't exist";
-            //TO DO : create an error user doesn't exist
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION["user"])) {
+
+            $me = unserialize($_SESSION["user"]);
+            if ($me->getUser_id() === $_REQUEST["user_id"] || $_SESSION["isAdmin"]) {
+                $usr = ModelUser::select($_REQUEST);
+                if ($usr === null) {
+                    echo "This User doesn't exist";
+                    //TO DO : create an error user doesn't exist
+                } else {
+                    require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+                }
+            } else {
+                ControllerGlobal::accesForbidden();
+            }
         } else {
-            require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+            ControllerGlobal::accesForbidden();
         }
     }
 
