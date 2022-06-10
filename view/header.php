@@ -36,8 +36,8 @@
                 if (isset($_SESSION['asTeam']) && $_SESSION['asTeam']) {
                         echo '<a class="dropdown-item" href="'. File::fileDirection("/teams/". unserialize($_SESSION["team"])->getTeam_id() ."/read") .'">Mon équipe</a>';
                         } else {
-                    echo '<a class="dropdown-item" href = "'. File::fileDirection(" / teams / readAll") .'" > Rejoindre une équipe </a>
-                    <a class="dropdown-item" href = "'. File::fileDirection(" / teams / create") .'" > Créer une équipe </a>';
+                    echo '<a class="dropdown-item" href = "'. File::fileDirection("/teams/readAll") .'" > Rejoindre une équipe </a>
+                    <a class="dropdown-item" href = "'. File::fileDirection("/teams/create") .'" > Créer une équipe </a>';
                     }
                     echo '</div>
                 </li>';}
