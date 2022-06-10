@@ -173,5 +173,24 @@ class ModelUser extends Model{
 
         return $obj[0];
     }
+
+    public function getTeam() {
+        $sql = "SELECT T.* FROM Teams T JOIN Teams_user TU ON TU.team_id=T.team_id WHERE TU.user_id=:tag_user;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_user"] = $this->user_id;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelTeams');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj[0];
+    }
 }
 ?>

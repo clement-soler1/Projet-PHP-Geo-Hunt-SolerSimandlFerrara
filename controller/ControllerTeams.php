@@ -34,6 +34,20 @@ class ControllerTeams
         require File::build_path(array("view","view.php"));
     }
 
+    public static function read() {
+        $controller = 'teams';
+        $view = 'read';
+        $pagetitle = 'Geo-Hunt - Mon équipe';
+        $team = ModelTeams::select($_REQUEST);
+        $members = $team->getMembers();
+        if ($team === null) {
+            echo "This Team doesn't exist";
+            //TO DO : create an error user doesn't exist
+        } else {
+            require File::build_path(array("view", "view.php"));  //"redirige" vers la vue
+        }
+    }
+
 }
 
 ?>

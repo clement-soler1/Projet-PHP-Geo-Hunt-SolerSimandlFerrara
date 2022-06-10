@@ -26,17 +26,22 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
-                <li class="nav-item dropdown">
+                </li>';}
+
+                echo '<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Equipe
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Mon équipe</a>
-                        <a class="dropdown-item" href="#">Rejoindre une équipe</a>
-                        <a class="dropdown-item" href="'. File::fileDirection("/teams/create") .'">Créer une équipe</a>
-                    </div>
-                </li>';}
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">';
+                if (isset($_SESSION['asTeam']) && $_SESSION['asTeam']) {
+                        echo '<a class="dropdown-item" href="'. File::fileDirection("/teams/". unserialize($_SESSION["team"])->getTeam_id() ."/read") .'">Mon équipe</a>';
+                        } else {
+                    echo '<a class="dropdown-item" href = "'. File::fileDirection(" / teams / readAll") .'" > Rejoindre une équipe </a>
+                    <a class="dropdown-item" href = "'. File::fileDirection(" / teams / create") .'" > Créer une équipe </a>';
+                    }
+                    echo '</div>
+                </li>';
+
     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
         echo '
                 <li class="nav-item dropdown">

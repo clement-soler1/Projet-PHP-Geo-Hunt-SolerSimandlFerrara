@@ -86,6 +86,11 @@ class ControllerUser {
                     $_SESSION['user']= serialize($user);
                     $_SESSION['isAdmin'] = $user->isAdmin();
                     $_SESSION['login'] = $user->getUsername();
+
+                    $team = $user->getTeam();
+                    $_SESSION["asTeam"] = !(is_null($team));
+                    $_SESSION['team'] = serialize($team);
+
                     //redirection sur le profil de l'utilisateur
                     header("LOCATION: ". File::fileDirection("/user/".$user->getUser_id()."/read"));
                 } else {
