@@ -52,3 +52,8 @@
         <div class="iconUtility"><i class="material-icons iconUtility icoSetAdmin">font_download</i></div>
     </div>-->
 </div>
+
+<div class="tm-spacer"></div>
+<div id="tm-leave">
+    <button type="button" class="btn btn-danger">Quitter mon équipe</button>
+</div>
