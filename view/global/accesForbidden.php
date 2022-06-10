@@ -9,8 +9,8 @@
 
 <div id="ctnrrethome" class="">
     <div class="col-md-12 text-center">
-        <form action="<?php echo File::build_path(array("index.php")) ?>">
-            <button type="submit" class="btn btn-light centerBtn">Retour à l'Acceuil</button>
+        <form action="<?php echo File::fileDirection("/")  ?>">
+            <button type="submit" class="btn btn-light centerBtn">Retour à l'Accueil</button>
         </form>
     </div>
 </div>
