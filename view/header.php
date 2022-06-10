@@ -26,7 +26,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>';}
+                </li>';
 
                 echo '<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,7 +40,7 @@
                     <a class="dropdown-item" href = "'. File::fileDirection(" / teams / create") .'" > Créer une équipe </a>';
                     }
                     echo '</div>
-                </li>';
+                </li>';}
 
     if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
         echo '
