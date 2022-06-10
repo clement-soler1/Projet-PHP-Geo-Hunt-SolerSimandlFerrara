@@ -12,7 +12,7 @@ $DIR_PATH = getcwd() . "/../";
 require_once  $DIR_PATH.'lib/File.php';
 
 require_once File::build_path(array("controller","ControllerUser.php"));
-require_once File::build_path(array("controller","ControllerHunt.php"));
+require_once File::build_path(array("controller","ControllerHunts.php"));
 require_once File::build_path(array("controller","ControllerQuestion.php"));
 require_once File::build_path(array("controller","ControllerGlobal.php"));
 require_once File::build_path(array("controller","ControllerTeams.php"));

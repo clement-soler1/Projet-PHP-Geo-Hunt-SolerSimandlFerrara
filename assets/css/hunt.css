@@ -99,3 +99,31 @@
     width: 60vh;
     height: 60vh;
 }
+
+.titleHnt {
+    width: 100%;
+    text-align: center;
+    padding-top: 2vw;
+    color: white;
+}
+
+.myMapsBody {
+    background-color: #1e2833;
+    vertical-align: center;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.myMapsBodyExpanded {
+    height: 80vh;
+    transition: all 5s ease;
+    line-height: normal;
+}
+
+#huntInfo {
+    display: none;
+    transition: all 2s ease;
+}

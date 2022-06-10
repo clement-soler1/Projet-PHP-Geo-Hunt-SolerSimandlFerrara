@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="./assets/css/hunt.css">
+<link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("hunt.css") ?>">
 <section class="login-dark">
-    <form method="post" action="./index.php?action=create&controller=hunt">
+    <form method="post" action="<?php echo File::fileDirection("/hunts/create") ?>">
         <div>
             <h2 class="visually-hidden">Créer une piste</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
@@ -22,8 +22,6 @@
             </div>
             <div id="createhunt" class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Create</button></div>
             <a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>
-            <input type="hidden" name="action" value="create">
-            <input type="hidden" name="controller" value="hunt">
         </div>
         <div id='map'></div>
     </form>
