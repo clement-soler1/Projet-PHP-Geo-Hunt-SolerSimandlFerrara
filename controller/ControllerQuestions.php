@@ -18,6 +18,7 @@ class ControllerQuestions {
         $controller='questions';
         $view='createquestion';
         $pagetitle='GeoHunt - questions';
+        $use_mapbox = true;
         require File::build_path(array("view","view.php"));
     }
 }

@@ -22,6 +22,7 @@ class ControllerHunts {
         $controller='hunts';
         $view='createhunt';
         $pagetitle='GeoHunt - creer piste';
+        $use_mapbox = true;
         require File::build_path(array("view","view.php"));
     }
 
@@ -37,6 +38,7 @@ class ControllerHunts {
         $controller='hunts';
         $view='readAll';
         $pagetitle='Geo-hunt - mes pistes';
+        $use_mapbox = true;
         require File::build_path(array("view","view.php"));
     }
 

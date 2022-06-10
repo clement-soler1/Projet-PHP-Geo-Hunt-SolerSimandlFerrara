@@ -12,10 +12,21 @@ $MAPBOX_TOKEN = 'pk.eyJ1IjoidGFnZ2VyMDYiLCJhIjoiY2wwbWV5ZzFvMDl5bjNjbnRvcXpydjBm
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<?php echo File::assetsFilePath("bootstrap.min.css") ?>">
         <!--<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">-->
-        <link href="<?php echo File::assetsFilePath("mapbox/mapbox-gl.css") ?>" rel="stylesheet">
+
+
         <!--script loaded on head to be load before view-->
 <!--        <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>-->
-        <script src="<?php echo File::assetsFilePath("mapbox/mapbox-gl.js") ?>"></script>
+        <?php
+        if (!isset($use_mapbox)) {
+            $use_mapbox = false;
+        }
+
+        if ($use_mapbox) {
+            echo '<link href="'. File::assetsFilePath("mapbox/mapbox-gl.css") .'" rel="stylesheet">';
+            echo '<script src="'. File::assetsFilePath("mapbox/mapbox-gl.js") .'"></script>';
+        }
+        ?>
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo File::assetsFilePath("bootstrap.min.js") ?>"></script>
     </head>
