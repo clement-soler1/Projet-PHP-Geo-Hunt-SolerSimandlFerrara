@@ -198,6 +198,45 @@ class Model {
     public static function getSearchKeys() {
         return static::$searchKeys;
     }
+
+
+    public static function getAvailableId()
+    {
+        $id = rand(1, 99999);
+        $table_name = static::$object;
+        $searchKey = static::$searchKeys;
+
+        $sql = 'SELECT * FROM '.ucfirst($table_name) .' WHERE';
+        $nbAtt = count($searchKey);
+        $ct = 0;
+
+        foreach ($searchKey as $atb) {
+            $ct = $ct + 1;
+            $tagAtb = ":tag_".$atb;
+            $sql = $sql." ".$atb."=".$tagAtb;
+            if ($ct < $nbAtt) {
+                $sql = $sql." AND";
+            }
+        }
+
+        $sql = $sql.";";
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        foreach ($searchKey as $atb) {
+            $values[":tag_".$atb] = $id;
+        }
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Model'.ucfirst($table_name));
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return $id;
+        } else {
+            return static::getAvailableId();
+        }
+    }
       
 }
   

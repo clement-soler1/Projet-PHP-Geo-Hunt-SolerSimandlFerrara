@@ -52,7 +52,7 @@ class ModelHunts extends Model{
         }
     }
 
-    public static function getAvailableId()
+    /*public static function getAvailableId()
     {
         $query = "SELECT getAvailableHunt_ID() AS id;";
         $req = Model::$pdo->prepare($query);
@@ -61,6 +61,6 @@ class ModelHunts extends Model{
         $result = $req->fetch(PDO::FETCH_ASSOC);
         return intval($result["id"]);
 
-    }
+    }*/
 }
 ?>

@@ -26,7 +26,7 @@ class ModelTeams extends Model{
         }
     }
 
-    public static function getAvailableId()
+    /*public static function getAvailableId()
     {
         $query = "SELECT getAvailableTeam_ID() AS id;";
         $req = Model::$pdo->prepare($query);
@@ -35,7 +35,7 @@ class ModelTeams extends Model{
         $result = $req->fetch(PDO::FETCH_ASSOC);
         return intval($result["id"]);
 
-    }
+    }*/
 
     public function addToTeam($user_id,$rank = 0) {
         try {
