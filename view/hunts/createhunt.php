@@ -20,7 +20,7 @@
                 <P>long : </P>
                 <input class="form-control" type="text" name="lon" placeholder="long" style="width: 80%" disabled>
             </div>
-            <div id="createhunt" class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Create</button></div>
+            <div id="createhunt" class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Créer</button></div>
             <a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>
         </div>
         <div id='map'></div>

@@ -10,7 +10,7 @@ class ModelQuestions extends Model{
     private $lat;
     private $lon;
     private $user_id;
-    protected static $object = "Question";
+    protected static $object = "Questions";
     protected static $attributs = array ('qu_id','qu_title','qu_text','privacy','lat','lon','user_id');
     protected static $searchKeys = array ('qu_title');
 
@@ -57,6 +57,18 @@ class ModelQuestions extends Model{
             $this->user_id = $user_id;
         }
     }
+
+    /*
+    public static function getAvailableId()
+    {
+        $query = "SELECT getAvailableQu_ID() AS id;";
+        $req = Model::$pdo->prepare($query);
+
+        $req->execute();
+        $result = $req->fetch(PDO::FETCH_ASSOC);
+        return intval($result["id"]);
+
+    }*/
 }
 
 
