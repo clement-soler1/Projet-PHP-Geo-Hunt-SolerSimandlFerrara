@@ -88,3 +88,51 @@ input {
 .icopad {
     margin-left: 3%;
 }
+
+.teammate-head, .teammate {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    align-items: center;
+}
+
+.tm-username, .tm-admin > p, .teammate-head > .iconUtility > p {
+    margin-bottom: 0;
+}
+
+.teammate-head {
+    border: 3px solid white;
+    border-radius: 10px;
+    height: 3vw;
+}
+
+.tm-admin {
+    width: 20%;
+}
+
+.tm-username {
+    width: 60%;
+}
+
+.tm-spacer {
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    border: solid 3px white;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#tm-name {
+    width: 100%;
+    text-align: center;
+    margin-top: 2vw;
+}
+
+.teammate {
+    margin-top: 5px;
+}

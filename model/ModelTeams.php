@@ -63,5 +63,30 @@ class ModelTeams extends Model{
         echo '<i class="material-icons iconUtility icoDlt">delete</i>';
         echo '</div>';
     }
+
+
+    public function getMembers() {
+
+
+        //$sql = "SELECT * FROM User WHERE email=:tag_mail;";
+
+        $sql = "SELECT * FROM User U JOIN Teams_user T ON U.user_id=T.user_id WHERE t.team_id=:tag_team;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_team"] = $this->team_id;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj;
+
+    }
 }
 ?>
