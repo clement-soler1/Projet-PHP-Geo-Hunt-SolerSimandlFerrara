@@ -172,3 +172,15 @@ WHERE t2.team_id IS NULL;
 RETURN id;
 END; //
 DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION getAvailableQu_ID ()
+    RETURNS INT
+BEGIN
+    DECLARE id INT;
+SELECT COALESCE(MIN(q1.qu_id+1),1) INTO id
+FROM Questions q1 LEFT JOIN Teams q2 ON q1.qu_id+1 = q2.qu_id
+WHERE q2.qu_id IS NULL;
+RETURN id;
+END; //
+DELIMITER ;

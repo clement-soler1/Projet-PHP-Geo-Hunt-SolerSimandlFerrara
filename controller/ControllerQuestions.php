@@ -1,12 +1,16 @@
 <?php
 
 require_once File::build_path(array("model","ModelQuestions.php"));
+require_once File::build_path(array("model","ModelUser.php"));
 
-class ControllerQuestion {
+class ControllerQuestions {
 
     public static function create() {
-        $qu = new ModelHunts(-1,$_REQUEST['qu_title'],$_REQUEST['qu_text'],$_REQUEST['privacy'],$_REQUEST['lat'],$_REQUEST['lon'],"");
-        var_dump($qu);
+        session_start();
+        $usr = unserialize($_SESSION["user"]);
+        $idh = ModelQuestions::getAvailableId();
+
+        $qu = new ModelQuestions($idh,$_POST['qu_title'],$_POST['qu_text'],isset($_POST['privacy']),$_POST['lat'],$_POST['lon'],$usr->getUser_id());
         $qu->save();
     }
 
