@@ -25,7 +25,6 @@
                     'type': 'FeatureCollection',
                     'features': [
                     <?php
-                    $usr = unserialize($_SESSION["user"]);
                     if (isset($my_hunts)){
                         foreach ($my_hunts as $hunt){
                             if($hunt->getUser_id() == $usr->getUser_id())

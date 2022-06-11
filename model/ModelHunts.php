@@ -52,6 +52,28 @@ class ModelHunts extends Model{
         }
     }
 
+    public static function getUserQuestions(){
+        session_start();
+        $usr = unserialize($_SESSION["user"]);
+
+        $sql = "SELECT * FROM Questions WHERE user_id=:tag_id;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_id"] = $usr->getUser_id();
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelQuestions');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj;
+    }
+
     /*public static function getAvailableId()
     {
         $query = "SELECT getAvailableHunt_ID() AS id;";

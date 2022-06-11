@@ -34,6 +34,8 @@ class ControllerHunts {
     }
 
     public static function readAll() {
+        session_start();
+        $usr = unserialize($_SESSION["user"]);
         $my_hunts = ModelHunts::selectAll();
         $controller='hunts';
         $view='readAll';
@@ -51,6 +53,19 @@ class ControllerHunts {
         require File::build_path(array("view","view.php"));
     }
 
+    public static function addQuestions() {
+        $questions = ModelHunts::getUserQuestions();
+        $usr = unserialize($_SESSION["user"]);
+        $controller='hunts';
+        $view='addQu';
+        $pagetitle='ajout de question';
+        require File::build_path(array("view","view.php"));
+    }
 
+    public static function getQuestions() {
+        $controller='hunts';
+        $results = ModelHunts::getUserQuestions();
+        //var_dump($results);
+    }
 }
 ?>

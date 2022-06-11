@@ -3,6 +3,8 @@
     background: #475d62;
     background-size: cover;
     position: relative;
+    flex-direction: row;
+    display: flex;
 }
 
 .login-dark form {
@@ -117,4 +119,147 @@
 #huntInfo {
     display: none;
     transition: all 2s ease;
+}
+
+.addQu-dark {
+    height: 100vh;
+    background: #475d62;
+    background-size: cover;
+    position: relative;
+    flex-direction: row;
+    display: flex;
+}
+
+.addQu-dark form {
+    max-width: 49vw;
+    width: 90%;
+    height: 90%;
+    background-color: #1e2833;
+    padding: 40px;
+    border-radius: 4px;
+    /*transform: translate(-50%, -50%);*/
+    position: relative;
+    /*top: 50%;
+    left: 50%;*/
+    color: #fff;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    flex-direction: row;
+    display: flex;
+    margin: auto;
+}
+
+.addQu-dark .illustration {
+    text-align: center;
+    padding: 15px 0 20px;
+    font-size: 100px;
+    color: #2980ef;
+}
+
+.addQu-dark form .form-control {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #434a52;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+}
+
+.addQu-dark form .btn-primary {
+    background: #214a80;
+    border: none;
+    border-radius: 4px;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 26px;
+    text-shadow: none;
+    outline: none;
+}
+
+.addQu-dark form .btn-primary:hover, .addQu-dark form .btn-primary:active {
+    background: #214a80;
+    outline: none;
+}
+
+.addQu-dark form .forgot {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #6f7a85;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.addQu-dark form .forgot:hover, .addQu-dark form .forgot:active {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.addQu-dark form .btn-primary:active {
+    transform: translateY(1px);
+}
+
+#questions_list {
+    max-width: 49vw;
+    width: 90%;
+    height: 90%;
+    background-color: #1e2833;
+    padding: 40px;
+    border-radius: 4px;
+    position: relative;
+    color: #fff;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    flex-direction: column;
+    display: flex;
+    margin: auto;
+}
+
+.add_qu {
+    background-color: #263b52;
+    border-radius: 4px;
+    margin-top: 1vh;
+    flex-direction: row;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.rm_qu {
+    background-color: #263b52;
+    border-radius: 4px;
+    margin-top: 1vh;
+    flex-direction: row;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+}
+
+.quTit {
+    padding-left: 2vh;
+    padding-top: 1vh;
+    margin: auto;
+}
+
+.quTxt {
+    padding-left: 2vh;
+    padding-bottom: 1vh;
+    margin: auto;
+}
+
+.add_icon {
+    height: 100%;
+    margin-right: 3vh;
+}
+
+.add_icon i{
+    position:relative;
+    top: 30%;
+    color: green;
+}
+
+#addedQu {
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+    display: flex;
 }
