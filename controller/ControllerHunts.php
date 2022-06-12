@@ -67,5 +67,13 @@ class ControllerHunts {
         $results = ModelHunts::getUserQuestions();
         //var_dump($results);
     }
+
+    public static function createlist() {
+        var_dump($_POST);
+
+        $hunt = new ModelHuntQuList($_POST['qu_id'],$_POST['hunt_id'],$_POST['qu_num']);
+
+        $hunt->save();
+    }
 }
 ?>

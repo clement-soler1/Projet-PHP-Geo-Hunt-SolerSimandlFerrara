@@ -74,6 +74,23 @@ class ModelHunts extends Model{
         return $obj;
     }
 
+    public function addQuestion($quId,$quNum){
+        try {
+            $sql = "INSERT INTO hunt_qu_list(qu_id, hunt_id, qu_num) VALUES (:tag_qu,:tag_hunt,:tag_num)";
+            $req_prep = Model::$pdo->prepare($sql);
+
+            $values = array(
+                "tag_qu" => $quId,
+                "tag_hunt" => $this->hunt_id,
+                "tag_num" => $quNum,
+            );
+            $req_prep->execute($values);
+
+        } catch(PDOException $e) {
+            echo $e->getMessage(); // affiche un message d'erreur
+        }
+    }
+
     /*public static function getAvailableId()
     {
         $query = "SELECT getAvailableHunt_ID() AS id;";
