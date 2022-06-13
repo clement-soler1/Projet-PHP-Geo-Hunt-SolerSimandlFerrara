@@ -1,17 +1,18 @@
 <link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("hunt.css") ?>">
-<section class="login-dark">
+<section class="rall-dark">
     <h1 class="titleHnt">Mes pistes</h1>
     <div class="myMapsBody" id="readBody">
-        <div id='map' style="margin: 2vw"></div>
+        <div id='map2' style="margin: 2vw;min-width: 100px;"></div>
         <div id='huntInfo'>
             <h1 style="color: white">WE'RE PLAYING GUBBLE</h1>
+            <button type="button" class="btn btn-success">Jouer</button>
         </div>
     </div>
 
     <script>
         mapboxgl.accessToken = '<?php echo $MAPBOX_TOKEN;?>';
         this.map = new mapboxgl.Map({
-            container: 'map', // container ID
+            container: 'map2', // container ID
             style: 'mapbox://styles/mapbox/streets-v11', // style URL
             center: [6.0209, 43.1372], // starting position [lng, lat]
             zoom: 13, // starting zoom
@@ -31,7 +32,7 @@
                             echo "
                                 {
                                     'type':'Feature',
-                                    'properties':{'description':'".$hunt->getHunt_Title()."'},
+                                    'properties':{'title':'".$hunt->getHunt_Title()."'},
                                     'geometry': {'type':'Point','coordinates':[".$hunt->getLon().",".$hunt->getLat()."]}
                                 },
                             ";
@@ -53,9 +54,14 @@
                 "paint": {
                     /*"text-size": 10,*/
                 }
+
+
+
             });
 
             this.map.on('click', 'hunts', (e) => {
+                console.log(e);
+                console.log(e.features[0].properties);
                /* const coordinates = e.features[0].geometry.coordinates.slice();
                 const description = e.features[0].properties.description;
 
@@ -67,14 +73,23 @@
                     .setLngLat(coordinates)
                     .setHTML(description)
                     .addTo(map);*/
-                ani();
+                ani(e.features[0].properties);
             });
         });
 
-        function ani() {
+        function ani(data) {
             document.getElementById('readBody').style.height = "80vh";
-            document.getElementById('huntInfo').style.display = "block";
+            document.getElementById('huntInfo').style.display = "flex";
+
+            $("#huntInfo > h1")[0].innerHTML = data.title;
         }
+    </script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaHlyb25vcyIsImEiOiJjazFqYW1jNnUwdml3M2tqeWxybDh0MGN6In0.i4-4y55whFwhGNAlyBQiSw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11'
+        });
     </script>
 
 </section>

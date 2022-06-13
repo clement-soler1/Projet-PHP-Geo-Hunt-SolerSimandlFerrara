@@ -7,6 +7,15 @@
     display: flex;
 }
 
+.rall-dark {
+    height: 100vh;
+    background: #475d62;
+    background-size: cover;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+}
+
 .login-dark form {
     max-width: 80vw;
     width: 90%;
@@ -87,9 +96,14 @@
     text-align: center;
 }
 
-#map {
+#map2 {
     margin: auto;
     width: inherit;
+    height: 60vh;
+}
+#map2 {
+    margin: auto;
+    width: calc(100% - 4vw);
     height: 60vh;
 }
 
@@ -108,6 +122,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .myMapsBodyExpanded {
@@ -119,6 +134,15 @@
 #huntInfo {
     display: none;
     transition: all 2s ease;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+#huntInfo > button {
+    height: 3vw;
+
 }
 
 .addQu-dark {
