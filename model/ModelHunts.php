@@ -101,5 +101,27 @@ class ModelHunts extends Model{
         return intval($result["id"]);
 
     }*/
+
+    public function getQuestion($number) {
+
+        $sql = "SELECT Q.* FROM Questions Q JOIN Hunt_qu_list H ON Q.qu_id=H.qu_id WHERE H.hunt_id=:tag_hid AND H.qu_num=:tag_qnum;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_hid"] = $this->hunt_id;
+        $values[":tag_qnum"] = $number;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelQuestions');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj;
+
+    }
 }
 ?>

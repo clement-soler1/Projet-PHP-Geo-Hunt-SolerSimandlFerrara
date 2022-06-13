@@ -2,7 +2,7 @@
 
 class File {
 
-    public static $localPath = '/geohunt';
+    public static $localPath = '/dev/cnam/Projet-PHP-SolerSimandlFerrara';
 
     public static function build_path($path_array) {
         $DS = DIRECTORY_SEPARATOR;
