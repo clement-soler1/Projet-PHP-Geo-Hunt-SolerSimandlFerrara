@@ -32,7 +32,7 @@
                             echo "
                                 {
                                     'type':'Feature',
-                                    'properties':{'title':'".$hunt->getHunt_Title()."'},
+                                    'properties':{'title':'".$hunt->getHunt_Title()."', 'hid':'".$hunt->getHunt_Id()."'},
                                     'geometry': {'type':'Point','coordinates':[".$hunt->getLon().",".$hunt->getLat()."]}
                                 },
                             ";
@@ -82,6 +82,12 @@
             document.getElementById('huntInfo').style.display = "flex";
 
             $("#huntInfo > h1")[0].innerHTML = data.title;
+            $("#huntInfo > button")[0].dataset.hid = data.hid;
+
+            $("#huntInfo > button").off("click").on("click", () => {
+                let link = "<?php echo File::fileDirection("/hunts/%_%/play") ?>";
+                location.href = link.replaceAll("%_%",$("#huntInfo > button")[0].dataset.hid);
+            });
         }
     </script>
     <script>
