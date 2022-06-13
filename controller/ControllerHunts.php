@@ -55,6 +55,8 @@ class ControllerHunts {
 
     public static function addQuestions() {
         $questions = ModelHunts::getUserQuestions();
+        $hunt = ModelHunts::select($_REQUEST);
+        var_dump($hunt);
         $usr = unserialize($_SESSION["user"]);
         $controller='hunts';
         $view='addQu';
@@ -69,11 +71,8 @@ class ControllerHunts {
     }
 
     public static function createlist() {
-        var_dump($_POST);
-
-        $hunt = new ModelHuntQuList($_POST['qu_id'],$_POST['hunt_id'],$_POST['qu_num']);
-
-        $hunt->save();
+        $hunt = ModelHunts::select($_REQUEST);
+        $hunt->addQuestion($_REQUEST["qu_id"],$_REQUEST["number"]);
     }
 }
 ?>

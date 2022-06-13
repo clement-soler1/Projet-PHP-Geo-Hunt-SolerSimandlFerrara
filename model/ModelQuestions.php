@@ -48,7 +48,7 @@ class ModelQuestions extends Model{
                                 $qu_text = NULL, $privacy = NULL,$lat = NULL , $lon = NULL, $user_id = NULL) {
         if (!is_null($qu_id) && !is_null($qu_title) && !is_null($qu_text)
             && !is_null($privacy) && !is_null($lat) && !is_null($lon) && !is_null($user_id)) {
-            $this->qu_id = $qu_id;
+                $this->qu_id = $qu_id;
             $this->qu_title = $qu_title;
             $this->qu_text = $qu_text;
             $this->privacy = $privacy;

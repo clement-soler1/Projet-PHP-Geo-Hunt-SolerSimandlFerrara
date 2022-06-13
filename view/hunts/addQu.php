@@ -2,11 +2,10 @@
 <section class="addQu-dark">
     <form method="post" action="<?php echo File::fileDirection("/hunts/createlist") ?>">
         <div style="width: 100%;">
-            <h2 class="visually-hidden">Nom de piste</h2>
-            <input type='hidden' name='hunt_id' value='huntId'>
+            <h2 id="h-title" class="visually-hidden" data-hid="<?php echo $hunt->getHunt_Id() ?>"><?php echo $hunt->getHunt_Title() ?></h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div id="addedQu"></div>
-            <div id="createhunt" class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Créer</button></div>
+            <div id="createhunt" class="mb-3"><button id="validateBtn" class="btn btn-primary d-block w-100" type="button">Créer</button></div>
             <a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>
         </div>
     </form>
@@ -17,7 +16,7 @@
                 foreach ($questions as $qu){
                     if($qu->getUser_Id() == $usr->getUser_id())
                         echo "
-                            <div class='add_qu'>
+                            <div class='add_qu' data-quid='". $qu->getQu_Id() ."'>
                                 <div>
                                     <p class='quTit'>".$qu->getQu_Title()."</p>
                                     <p class='quTxt'>".$qu->getQu_Text()."</p>
@@ -61,6 +60,22 @@
                 $("#questions_list").append($(this));
                 checker();
             })
+
+            $("#validateBtn").off("click").on("click", () => {
+                $("#addedQu > .rm_qu").each(function( i ) {
+                    let quid = $("#addedQu > .rm_qu")[i].dataset["quid"];
+                    let huntid = $("#h-title")[0].dataset["hid"];
+
+                    $.ajax({
+                        url:'<?php echo File::fileDirection("/hunts/".$hunt->getHunt_Id()."/createlist") ?>',
+                        type: "POST",
+                        data: {
+                            "qu_id": quid,
+                            "number": i
+                        }
+                    })
+                });
+            });
         });
     </script>
 </section>
