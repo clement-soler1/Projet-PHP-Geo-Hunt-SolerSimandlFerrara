@@ -16,7 +16,7 @@
                 foreach ($questions as $qu){
                     if($qu->getUser_Id() == $usr->getUser_id())
                         echo "
-                            <div class='add_qu' data-quid='". $qu->getQu_Id() ."'>
+                            <div class='add_qu' data-quid='".$qu->getQu_Id()."'>
                                 <div>
                                     <p class='quTit'>".$qu->getQu_Title()."</p>
                                     <p class='quTxt'>".$qu->getQu_Text()."</p>
@@ -65,7 +65,6 @@
                 $("#addedQu > .rm_qu").each(function( i ) {
                     let quid = $("#addedQu > .rm_qu")[i].dataset["quid"];
                     let huntid = $("#h-title")[0].dataset["hid"];
-
                     $.ajax({
                         url:'<?php echo File::fileDirection("/hunts/".$hunt->getHunt_Id()."/createlist") ?>',
                         type: "POST",

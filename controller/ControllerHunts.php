@@ -56,7 +56,6 @@ class ControllerHunts {
     public static function addQuestions() {
         $questions = ModelHunts::getUserQuestions();
         $hunt = ModelHunts::select($_REQUEST);
-        var_dump($hunt);
         $usr = unserialize($_SESSION["user"]);
         $controller='hunts';
         $view='addQu';
@@ -76,7 +75,13 @@ class ControllerHunts {
     }
 
     public static function play() {
-
+        $hunt = ModelHunts::select($_REQUEST);
+        $results = $hunt->getQuestion(0);
+        $controller='hunts';
+        $view='play';
+        $pagetitle= $hunt->getHunt_Title();
+        $use_mapbox = true;
+        require File::build_path(array("view","view.php"));
     }
 }
 ?>

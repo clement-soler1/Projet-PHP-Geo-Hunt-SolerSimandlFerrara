@@ -29,6 +29,7 @@ $MAPBOX_TOKEN = 'pk.eyJ1IjoidGFnZ2VyMDYiLCJhIjoiY2wwbWV5ZzFvMDl5bjNjbnRvcXpydjBm
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo File::assetsFilePath("bootstrap.min.js") ?>"></script>
+        <script src='https://unpkg.com/@turf/turf/turf.min.js'></script>
     </head>
     <body>
         <?php
