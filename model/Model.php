@@ -237,6 +237,23 @@ class Model {
             return static::getAvailableId();
         }
     }
+
+    public function toArrayObject() {
+        $json_array = array();
+
+        $lsAttributs = static::$attributs;
+
+
+        foreach ($lsAttributs as $val) {
+            $fn_name = 'get'.ucfirst($val);
+
+            $json_array[$val] = $this->$fn_name();
+
+        }
+
+        return $json_array;
+
+    }
       
 }
   

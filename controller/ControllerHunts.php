@@ -74,5 +74,9 @@ class ControllerHunts {
         $hunt = ModelHunts::select($_REQUEST);
         $hunt->addQuestion($_REQUEST["qu_id"],$_REQUEST["number"]);
     }
+
+    public static function play() {
+
+    }
 }
 ?>
