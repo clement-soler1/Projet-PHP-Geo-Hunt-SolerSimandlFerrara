@@ -106,5 +106,12 @@ class ModelAttempts extends Model{
 
         return $obj;
     }
+
+    public static function getUserName($attempt) {
+        $user_id = $attempt->user_id;
+        $user = ModelUser::getUserById($user_id);
+        $name = $user->getUsername();
+        return $name;
+    }
 }
 ?>

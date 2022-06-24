@@ -48,7 +48,9 @@ class ControllerHunts {
         $controller='hunts';
         $view='showHighscore';
         $pagetitle='piste';
-        $scores = ModelAttempts::getAttemptsOfHunt(1);
+        $hunt = ModelHunts::select($_REQUEST);
+        $id = $hunt->getHunt_Id();
+        $scores = ModelAttempts::getAttemptsOfHunt($id);
         $p_a = ModelAttempts::getPreviousAttemptsOfHuntByUser(1,5);
         require File::build_path(array("view","view.php"));
     }

@@ -3,7 +3,8 @@
     <div id="playBody">
         <div class="quizz">
             <h2><?php echo $hunt->getHunt_Title() ?></h2>
-
+            <h2 id="qu_title"></h2>
+            <p id="qu_text"></p>
         </div>
         <div id='map' style="min-width: 100px;margin: 2vw"></div>
     </div>
@@ -36,9 +37,31 @@
                 units: 'kilometers'
             };
             var distance = turf.distance(from, position, options);
+            console.log(distance);
             if(distance<0.025) {
-                $('.quizz').append(`<h2><?php echo $results[0]->getQu_Title() ?></h2>`);
+                $('#qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
+                $('#qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+            }else {
+                $('#qu_title').text('');
+                $('#qu_text').text('');
             }
         });
+        /*var add_marker = function (event) {
+            var coordinates = [event.lngLat.lng,event.lngLat.lat];
+            this.marker1.setLngLat(coordinates).addTo(this.map);
+            var options = {
+                units: 'kilometers'
+            };
+            var distance = turf.distance(from, coordinates, options);
+            if(distance<0.025) {
+                $('#qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
+                $('#qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+            }else {
+                $('#qu_title').text('');
+                $('#qu_text').text('');
+            }
+        }
+        marker1 = new mapboxgl.Marker();
+        map.on('click', add_marker.bind(this));*/
     </script>
 </section>

@@ -175,6 +175,27 @@ class ModelUser extends Model{
         return $obj[0];
     }
 
+    public static function getUserById($id) {
+
+
+        $sql = "SELECT * FROM User WHERE user_id=:tag_id;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_id"] = $id;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelUser');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        return $obj[0];
+    }
+
     public function getTeam() {
         $sql = "SELECT T.* FROM Teams T JOIN Teams_user TU ON TU.team_id=T.team_id WHERE TU.user_id=:tag_user;";
 
