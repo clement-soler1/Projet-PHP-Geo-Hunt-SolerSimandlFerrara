@@ -12,6 +12,8 @@ class ControllerQuestions {
 
         $qu = new ModelQuestions($idh,$_POST['qu_title'],$_POST['qu_text'],isset($_POST['privacy']),$_POST['lat'],$_POST['lon'],$usr->getUser_id());
         $qu->save();
+
+        header("LOCATION: ". File::fileDirection("/questions/createquestion"));
     }
 
     public static function createquestion() {

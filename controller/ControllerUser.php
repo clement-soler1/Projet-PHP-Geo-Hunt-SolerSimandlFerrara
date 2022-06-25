@@ -132,14 +132,14 @@ class ControllerUser {
     }
 
     public static function readAll() {
-        if (/*isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']*/ true) {
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
             $tab_usr = ModelUser::selectAll();
             $controller='user';
             $view='readAll';
             $pagetitle='Geo-hunt - Users';
             require File::build_path(array("view","view.php"));  //"redirige" vers la vue
         } else {
-            //showError
+            ControllerGlobal::accesForbidden();
         }
     }
 

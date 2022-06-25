@@ -7,15 +7,17 @@
 class ControllerHunts {
 
     public static function create() {
-        session_start();
-        var_dump($_POST);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
         $usr = unserialize($_SESSION["user"]);
-        //var_dump($usr);
         $idh = ModelHunts::getAvailableId();
         $hunt = new ModelHunts($idh,$_POST['hunt_title'],isset($_POST['privacy']),$_POST['lat'],$_POST['lon'],$usr->getUser_id());
 
         $hunt->save();
+
+        header("LOCATION: ". File::fileDirection("/hunts/".$idh."/addQuestions"));
     }
 
     public static function addhunt() {
@@ -34,7 +36,9 @@ class ControllerHunts {
     }
 
     public static function readAll() {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $usr = unserialize($_SESSION["user"]);
         $my_hunts = ModelHunts::selectAll();
         $controller='hunts';

@@ -6,7 +6,7 @@
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div id="addedQu"></div>
             <div id="createhunt" class="mb-3"><button id="validateBtn" class="btn btn-primary d-block w-100" type="button">Créer</button></div>
-            <a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>
+            <!--<a class="forgot" href="?action=createquestion&controller=question">No questions? create some!</a>-->
         </div>
     </form>
     <div id="questions_list">
@@ -74,6 +74,8 @@
                         }
                     })
                 });
+
+                location.href = "<?php echo File::fileDirection("/hunts/readAll") ?>";
             });
         });
     </script>

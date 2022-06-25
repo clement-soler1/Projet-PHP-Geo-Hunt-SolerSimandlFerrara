@@ -14,7 +14,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Jouer</a>
+                    <a class="nav-link" href="'. File::fileDirection("/hunts/readAll") .'">Jouer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="'. File::fileDirection("/hunts/addhunt") .'">Creer une hunt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="'. File::fileDirection("/hunts/addhunt") .'">Creer une question</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="'. File::fileDirection("/user/". unserialize($_SESSION["user"])->getUser_id() ."/read") .'">Mon profil</a>
                 </li>
                 ';
 
