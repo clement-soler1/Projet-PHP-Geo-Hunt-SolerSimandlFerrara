@@ -129,7 +129,7 @@ class ModelUser extends Model{
             "join_date" => $this->join_date,
             "profile_pic" => $this->profile_pic,
             "description" => $this->description,
-            "admin" => !$this->admin,
+            "admin" => $this->admin,
             "token" => $this->token,
             "enabled" => $this->enabled
         );

@@ -197,23 +197,28 @@ class ControllerUser {
             session_start();
         }
 
-        $me = unserialize($_SESSION["user"]);
+        if (isset($_SESSION["user"])) {
+            $me = unserialize($_SESSION["user"]);
 
-        if (isset($_REQUEST['user_id'])) {
-            $params['user_id'] = $_REQUEST['user_id'];
-        }else
-        {
-            $params['user_id'] = $me->getUser_id();
-        }
 
-        if ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) || $me->getUser_id() == $params['login']) {
+            if (isset($_REQUEST['user_id'])) {
+                $params['user_id'] = $_REQUEST['user_id'];
+            }else
+            {
+                $params['user_id'] = $me->getUser_id();
+            }
 
-            $usr = ModelUser::select($params);
-            $controller='user';
-            $view='update';
-            $pagetitle='Geohunt - Mon Compte';
-            require File::build_path(array("view","view.php"));
+            if ((isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) || $me->getUser_id() == $params['login']) {
 
+                $usr = ModelUser::select($params);
+                $controller='user';
+                $view='update';
+                $pagetitle='Geohunt - Mon Compte';
+                require File::build_path(array("view","view.php"));
+
+            } else {
+                ControllerGlobal::accesForbidden();
+            }
         } else {
             ControllerGlobal::accesForbidden();
         }
@@ -226,9 +231,21 @@ class ControllerUser {
         $params['user_id'] = intval($_REQUEST['user_id']);
         $usr = ModelUser::select($params);
 
-        $params = $_REQUEST;
-        $usr->update($params);
 
+        $params = Array();
+        $arrayObj = (array) $usr;
+        foreach ($arrayObj as $key => $val) {
+            $keyName = preg_replace('/[\x00-\x1F\x80-\xFF]/', '',  str_replace("ModelUser","",$key));
+
+            if (isset($_REQUEST[$keyName])) {
+                $params[$keyName] = $_REQUEST[$keyName];
+            } else {
+                $params[$keyName] = $val;
+            }
+        }
+
+
+        $usr->update($params);
 
         header("LOCATION: ". File::fileDirection("/user/".$params['user_id']."/read"));
     }

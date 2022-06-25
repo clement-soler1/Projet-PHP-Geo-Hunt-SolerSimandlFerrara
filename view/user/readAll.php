@@ -31,6 +31,7 @@
 <script>
     let del_link = "<?php echo File::fileDirection("/user/%_%/delete") ?>";
     let sa_link = "<?php echo File::fileDirection("/user/%_%/setAdmin") ?>";
+    let updt_link = "<?php echo File::fileDirection("/user/%_%/update") ?>";
     $(document).ready(() => {
         $(".icoDlt").off("click").on("click", (e) => {
             if (confirm("Etes-vous sur de vouloir supprimer cet utilisateur ?") == true) {
@@ -43,6 +44,11 @@
             let id = e.target.parentElement.dataset["uid"];
 
             location.href = sa_link.replaceAll("%_%",id);
+        });
+        $(".icoUpt").off("click").on("click", (e) => {
+            let id = e.target.parentElement.dataset["uid"];
+
+            location.href = updt_link.replaceAll("%_%",id);
         });
 
 
