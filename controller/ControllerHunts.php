@@ -85,5 +85,14 @@ class ControllerHunts {
         $use_mapbox = true;
         require File::build_path(array("view","view.php"));
     }
+
+    public static function test() {
+        $hunt = ModelHunts::select($_REQUEST);
+        echo $hunt->getRankAverage();
+        echo '<br>';
+        echo $hunt->getMyRank();
+
+        $hunt->setMyRank(1);
+    }
 }
 ?>

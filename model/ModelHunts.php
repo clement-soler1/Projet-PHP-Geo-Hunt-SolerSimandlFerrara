@@ -76,7 +76,7 @@ class ModelHunts extends Model{
 
     public function addQuestion($quId,$quNum){
         try {
-            $sql = "INSERT INTO hunt_qu_list(qu_id, hunt_id, qu_num) VALUES (:tag_qu,:tag_hunt,:tag_num)";
+            $sql = "INSERT INTO Hunt_qu_list(qu_id, hunt_id, qu_num) VALUES (:tag_qu,:tag_hunt,:tag_num)";
             $req_prep = Model::$pdo->prepare($sql);
 
             $values = array(
@@ -122,6 +122,81 @@ class ModelHunts extends Model{
 
         return $obj;
 
+    }
+
+    public function getRankAverage() {
+        $sql = "SELECT AVG(rank) FROM Hunt_rank WHERE hunt_id=:tag_hunt;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_hunt"] = $this->hunt_id;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        //retourne null si aucun rank
+        return $obj[0]["AVG(rank)"];
+    }
+
+    public function getMyRank() {
+        $sql = "SELECT rank FROM Hunt_rank WHERE hunt_id=:tag_hunt AND user_id=:tag_user;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $usr = unserialize($_SESSION["user"]);
+
+        $values[":tag_hunt"] = $this->hunt_id;
+        $values[":tag_user"] = $usr->getUser_id();
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_ASSOC);
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return null;
+        }
+
+        //retourne null si aucun rank
+        return $obj[0]["rank"];
+    }
+
+    public function setMyRank($rank)
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $usr = unserialize($_SESSION["user"]);
+
+        $sql = "INSERT INTO Hunt_rank(hunt_id, user_id, rank) VALUES (:tag_hunt,:tag_usr,:tag_rank)";
+
+        if (!is_null($this->getMyrank())) {
+            //security if rank already made, request is an update
+            $sql = "UPDATE Hunt_rank SET rank=:tag_rank WHERE hunt_id=:tag_hunt AND user_id=:tag_usr;";
+        }
+
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+
+            $values = array(
+                "tag_hunt" => $this->hunt_id,
+                "tag_rank" => $rank,
+                "tag_usr" => $usr->getUser_id(),
+            );
+            $req_prep->execute($values);
+
+        } catch (PDOException $e) {
+            echo $e->getMessage(); // affiche un message d'erreur
+        }
     }
 }
 ?>
