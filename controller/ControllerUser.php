@@ -154,7 +154,7 @@ class ControllerUser {
             //ControllerUser::readAll();
             header("LOCATION: ". File::fileDirection("/user/readAll"));
         } else {
-            ControllerGlobal::error();
+            ControllerGlobal::accesForbidden();
         }
     }
 

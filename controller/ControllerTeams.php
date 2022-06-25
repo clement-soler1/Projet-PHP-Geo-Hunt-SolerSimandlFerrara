@@ -20,7 +20,7 @@ class ControllerTeams
         $team = new ModelTeams(ModelTeams::getAvailableId(),$_POST["team_name"]);
 
         $team->save();
-        $usr = $_SESSION["user"];
+        $usr = unserialize($_SESSION["user"]);
         $team->addToTeam($usr->getUser_id(),1);
     }
 
