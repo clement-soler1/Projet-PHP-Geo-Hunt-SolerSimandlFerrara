@@ -14,17 +14,25 @@ class ModelAttempts extends Model{
     protected static $attributs = array ('attempt_id','hunt_id','user_id','attempt_time','attempt_date','score','win');
     protected static $searchKeys = array ('attempt_id');
 
-    public function getAttemptId()
+    public function getAttempt_id()
     {
         return $this->attempt_id;
     }
+
+    function getHunt_Id() {
+        return $this->hunt_id;
+    }
+
+    function getUser_id() {
+        return $this->user_id;
+    }
     
-    public function getAttemptTime()
+    public function getAttempt_time()
     {
         return $this->attempt_time;
     }
 
-    public function getAttemptDate()
+    public function getAttempt_date()
     {
         return $this->attempt_date;
     }
@@ -122,9 +130,12 @@ class ModelAttempts extends Model{
         return ($this->score/10);
     }
 
-    public function finish() {
+    public function finish($hid,$uid) {
+        $this->hunt_id = $hid;
+        $this->user_id = $uid;
+        var_dump($this);
         $this->win = true;
-        $this->attempt_time -= date('H:i:s');
+        //$this->attempt_time = date_diff($this->attempt_time,date('H:i:s'));
         $this->save();
     }
 }

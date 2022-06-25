@@ -16,7 +16,7 @@
                         else
                             $win = "<i class='fa-solid fa-trophy lose'></i>";
                         echo "
-                                <div class='ls_item' data-atid='".$attempt->getAttemptId()."'>
+                                <div class='ls_item' data-atid='".$attempt->getAttempt_id()."'>
                                     <div class='win' data-atwin='".$attempt->getWin()."'>
                                         ".$win."
                                     </div>
@@ -27,10 +27,10 @@
                                         ".$attempt->getScore()."
                                     </div>
                                     <div class='time'>
-                                        ".$attempt->getAttemptTime()."
+                                        ".$attempt->getAttempt_time()."
                                     </div>
                                     <div class='date'>
-                                        ".$attempt->getAttemptDate()."
+                                        ".$attempt->getAttempt_date()."
                                     </div>
                                 </div>
                             ";

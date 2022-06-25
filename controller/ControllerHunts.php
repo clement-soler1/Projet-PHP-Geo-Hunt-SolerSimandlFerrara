@@ -123,7 +123,10 @@ class ControllerHunts {
             $nbq = $hunt->getNbQuestions();
             if ($nbq == $attempt->getNextQuestionId()) {
                 //win
-                $attempt->finish();
+                $hid = $hunt -> getHunt_Id();
+                $usr = unserialize($_SESSION["user"]);
+                $uid = $usr -> getUser_id();
+                $attempt->finish($hid,$uid);
                 header("LOCATION: ". File::fileDirection("/hunts/".$hunt->getHunt_Id()."/victory"));
             } else {
                 //next question

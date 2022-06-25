@@ -62,7 +62,7 @@ class Model {
         foreach ($lsAttributs as $val) {
             $fn_name = 'get'.ucfirst($val);
             
-            $values[":tag_".$val] = $this->$fn_name();  
+            $values[":tag_".$val] = $this->$fn_name();
             
         }
         
