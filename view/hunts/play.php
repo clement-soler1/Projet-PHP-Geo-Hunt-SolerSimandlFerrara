@@ -3,7 +3,7 @@
     <div id="playBody">
         <div class="quizz">
             <h2><?php echo $hunt->getHunt_Title() ?></h2>
-            <div id='map' style="min-width: 100px;margin: 2vw"></div>
+            <div id='map' style="min-width: 100px;margin: 2vw; width: 85vw;"></div>
             <h2 class="qu_title" style="text-align: center"></h2>
             <p class="qu_text" style="text-align: center"></p>
             <button id="validateBtn" class="btn btn-primary d-block w-100" type="button" style="visibility: collapse">Trouvé!</button>
