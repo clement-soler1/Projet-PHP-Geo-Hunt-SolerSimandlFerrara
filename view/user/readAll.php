@@ -33,7 +33,7 @@
     let sa_link = "<?php echo File::fileDirection("/user/%_%/setAdmin") ?>";
     $(document).ready(() => {
         $(".icoDlt").off("click").on("click", (e) => {
-            if (confirm("Etes_vous sur de vouloir supprimer cet utilisateur ?") == true) {
+            if (confirm("Etes-vous sur de vouloir supprimer cet utilisateur ?") == true) {
                 let id = e.target.parentElement.dataset["uid"];
 
                 location.href = del_link.replaceAll("%_%", id);

@@ -59,8 +59,8 @@ p,h1,body {
 }
 .avatar {
     background-color: black;
-    height: 96px;
-    width: 96px;
+    height: 10vw;
+    width: 10vw;
     border-radius: 50%;
     border-width: 4px;
     border-color: #000;
@@ -94,10 +94,7 @@ p,h1,body {
 
 
 @media all and (min-width: 555px) {
-    .profile {
-        height: 100vh;
-        max-width: 700px;
-    }
+
     .profile-container {
         align-items: center;
         flex-direction: row;
@@ -114,4 +111,49 @@ p,h1,body {
         position: relative;
         max-height: 450px;
     }
+}
+
+
+.profile_entry {
+    margin: 0.5vw;
+}
+
+.bestAttempts {
+    margin-top: 2vw;
+}
+
+.profile-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5vw;
+}
+
+.profile-input input {
+    color: black;
+    width: 20vw;
+}
+
+.profile-input-desc {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5vw;
+}
+
+.profile-input-desc > textarea {
+    height: 10vw;
+    width: 30vw;
+    color: black;
+}
+
+.profile-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1vw;
+}
+
+.profile-action button {
+    margin: 0.5vw;
 }

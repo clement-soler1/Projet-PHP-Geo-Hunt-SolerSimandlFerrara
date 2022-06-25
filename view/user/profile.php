@@ -5,45 +5,37 @@
 <main class="profile">
     <link rel="stylesheet" type="text/css" href="<?php echo File::cssFilePath("profile.css") ?>">
     <h1 class="profile-title">
-        Profile
+        <b>Profil</b>
     </h1>
-    <div class="profile-container">
-        <div class="user">
-            <div class="image-container">
-                <img alt="" class="avatar" src="https://image.freepik.com/free-vector/coloured-knight-design_1152-54.jpg" />
-            </div>
-            <div class="user-info">
-                <p class="user-name">
-                    <?php echo $usr->getUsername() ;?>
-                </p>
-            </div>
-        </div>
-        <div class="info-container">
-            <div class="info">
-                <div class="title">
-                    Date d'inscription :
-                </div>
-                <div class="description">
-                    <?php echo $usr->getJoin_Date() ;?>
-                </div>
-            </div>
-            <div class="info">
-                <div class="title">
-                    Email :
-                </div>
-                <div class="description">
-                    <?php echo $usr->getEmail() ;?>
-                </div>
-            </div>
-            <div class="info">
-                <div class="title">
-                    Description :
-                </div>
-                <div class="description">
-                </div>
-                <?php echo $usr->getDescription() ;?>
-
-            </div>
-        </div>
+    <div class="image-container">
+        <img alt="profile_pic" class="avatar" src="https://image.freepik.com/free-vector/coloured-knight-design_1152-54.jpg" />
     </div>
+    <p class="profile_entry">Username : <?php echo $usr->getUsername() ;?></p>
+    <p class="profile_entry">Email : <?php echo $usr->getEmail() ;?></p>
+    <p class="profile_entry">Description : <?php echo $usr->getDescription() ;?></p>
+
+    <h1 class="profile-title bestAttempts"><b>
+        Meilleurs Scores
+    </b></h1>
+
+    <div>
+    </div>
+
+    <div class="profile-action">
+        <button type="button" id="btnDeleteMyAccount" class="btn btn-danger">Supprimer</button>
+        <button type="button" onclick="location.href = '<?php echo File::fileDirection("/user/". $usr->getUser_id() ."/update") ?>'" class="btn btn-success">Editer</button>
+    </div>
+
+    <script>
+        let del_link = "<?php echo File::fileDirection("/user/". $usr->getUser_id() ."/delete") ?>";
+        $(document).ready(() => {
+            $("#btnDeleteMyAccount").off("click").on("click", (e) => {
+                if (confirm("Etes-vous sur de vouloir supprimer vôtre compte ?") == true) {
+                    location.href = del_link;
+                }
+            });
+
+        });
+    </script>
+
 </main>
