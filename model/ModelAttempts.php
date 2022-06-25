@@ -125,6 +125,7 @@ class ModelAttempts extends Model{
     public function finish() {
         $this->win = true;
         $this->attempt_time -= date('H:i:s');
+        $this->save();
     }
 }
 ?>

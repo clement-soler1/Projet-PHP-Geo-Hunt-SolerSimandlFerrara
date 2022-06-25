@@ -42,9 +42,11 @@
             if(distance<0.025) {
                 $('.qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
                 $('.qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+                $('#validateBtn').css('visibility','visible');
             }else {
                 $('.qu_title').text('');
                 $('.qu_text').text('');
+                $('#validateBtn').css('visibility','collapse');
             }
         });
         var add_marker = function (event) {

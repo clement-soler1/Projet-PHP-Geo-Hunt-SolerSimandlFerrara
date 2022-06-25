@@ -310,3 +310,33 @@
     flex-direction: column;
     display: flex;
 }
+
+.winner {
+    height: 100vh;
+    background: #475d62;
+    color: #fff;
+}
+
+.winbody{
+    background-color: #1e2833;
+    vertical-align: center;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 95%;
+    height: 50%;
+    margin: auto;
+    top: 2%;
+    position: relative;
+}
+
+.winbody i {
+    color: yellow;
+}
+
+#scoreboard {
+    width: 60%;
+}

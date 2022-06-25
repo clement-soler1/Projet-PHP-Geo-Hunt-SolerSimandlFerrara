@@ -124,7 +124,7 @@ class ControllerHunts {
             if ($nbq == $attempt->getNextQuestionId()) {
                 //win
                 $attempt->finish();
-
+                header("LOCATION: ". File::fileDirection("/hunts/".$hunt->getHunt_Id()."/victory"));
             } else {
                 //next question
                 header("LOCATION: ". File::fileDirection("/hunts/".$hunt->getHunt_Id()."/play"));
@@ -141,6 +141,14 @@ class ControllerHunts {
         echo $hunt->getMyRank();
 
         $hunt->setMyRank(1);
+    }
+
+    public static function victory() {
+        $hunt = ModelHunts::select($_REQUEST);
+        $controller='hunts';
+        $view='victory';
+        $pagetitle='GeoHunt - victoire';
+        require File::build_path(array("view","view.php"));
     }
 }
 ?>
