@@ -78,12 +78,56 @@ class ControllerHunts {
 
     public static function play() {
         $hunt = ModelHunts::select($_REQUEST);
-        $results = $hunt->getQuestion(0);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['currentAttempt'])){
+            //next question
+            $attempt = unserialize($_SESSION['currentAttempt']);
+            $results = $hunt->getQuestion($attempt->getNextQuestionId());
+        } else {
+            //generate attempt
+            $ida = ModelAttempts::getAvailableId();
+            $usr = unserialize($_SESSION["user"]);
+            $score = 0;
+            $attempt_time = date("H:i:s");
+            $attempt_date = date("Y-m-d");
+            $win = false;
+
+            $attempt = new ModelAttempts($ida,$hunt->getHunt_Id(),$usr->getUser_id(),$attempt_time,$attempt_date,$score,$win);
+            $_SESSION['currentAttempt'] = serialize($attempt);
+            $results = $hunt->getQuestion(0);
+        }
+
         $controller='hunts';
         $view='play';
         $pagetitle= $hunt->getHunt_Title();
         $use_mapbox = true;
         require File::build_path(array("view","view.php"));
+    }
+
+    public static function playNext() {
+        $hunt = ModelHunts::select($_REQUEST);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['currentAttempt'])){
+            $attempt = unserialize($_SESSION['currentAttempt']);
+            $attempt->addPoints();
+            $_SESSION['currentAttempt'] = serialize($attempt);
+
+            $nbq = $hunt->getNbQuestions();
+            if ($nbq == $attempt->getNextQuestionId()) {
+                //win
+                $attempt->finish();
+
+            } else {
+                //next question
+                header("LOCATION: ". File::fileDirection("/hunts/".$hunt->getHunt_Id()."/play"));
+            }
+        } else {
+
+        }
     }
 
     public static function test() {

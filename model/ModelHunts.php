@@ -124,6 +124,27 @@ class ModelHunts extends Model{
 
     }
 
+    public function getNbQuestions() {
+
+        $sql = "SELECT Q.* FROM Questions Q JOIN Hunt_qu_list H ON Q.qu_id=H.qu_id WHERE H.hunt_id=:tag_hid;";
+
+        $req_prep = Model::$pdo->prepare($sql);
+        $values = array();
+
+        $values[":tag_hid"] = $this->hunt_id;
+
+        $req_prep->execute($values);
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelQuestions');
+        $obj = $req_prep->fetchAll();
+
+        if (sizeof($obj) == 0) {
+            return 0;
+        }
+
+        return count($obj);
+    }
+
+
     public function getRankAverage() {
         $sql = "SELECT AVG(rank) FROM Hunt_rank WHERE hunt_id=:tag_hunt;";
 

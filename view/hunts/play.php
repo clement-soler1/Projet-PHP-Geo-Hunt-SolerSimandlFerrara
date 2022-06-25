@@ -3,10 +3,11 @@
     <div id="playBody">
         <div class="quizz">
             <h2><?php echo $hunt->getHunt_Title() ?></h2>
-            <h2 id="qu_title"></h2>
-            <p id="qu_text"></p>
+            <div id='map' style="min-width: 100px;margin: 2vw"></div>
+            <h2 class="qu_title" style="text-align: center"></h2>
+            <p class="qu_text" style="text-align: center"></p>
+            <button id="validateBtn" class="btn btn-primary d-block w-100" type="button" style="visibility: collapse">Trouvé!</button>
         </div>
-        <div id='map' style="min-width: 100px;margin: 2vw"></div>
     </div>
 
     <script>
@@ -39,14 +40,14 @@
             var distance = turf.distance(from, position, options);
             console.log(distance);
             if(distance<0.025) {
-                $('#qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
-                $('#qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+                $('.qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
+                $('.qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
             }else {
-                $('#qu_title').text('');
-                $('#qu_text').text('');
+                $('.qu_title').text('');
+                $('.qu_text').text('');
             }
         });
-        /*var add_marker = function (event) {
+        var add_marker = function (event) {
             var coordinates = [event.lngLat.lng,event.lngLat.lat];
             this.marker1.setLngLat(coordinates).addTo(this.map);
             var options = {
@@ -54,14 +55,19 @@
             };
             var distance = turf.distance(from, coordinates, options);
             if(distance<0.025) {
-                $('#qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
-                $('#qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+                $('.qu_title').text(`<?php echo $results[0]->getQu_Title() ?>`);
+                $('.qu_text').text(`<?php echo $results[0]->getQu_Text() ?>`);
+                $('#validateBtn').css('visibility','visible');
             }else {
-                $('#qu_title').text('');
-                $('#qu_text').text('');
+                $('.qu_title').text('');
+                $('.qu_text').text('');
+                $('#validateBtn').css('visibility','collapse');
             }
         }
         marker1 = new mapboxgl.Marker();
-        map.on('click', add_marker.bind(this));*/
+        map.on('click', add_marker.bind(this));
+        $('#validateBtn').on('click', function (){
+            location.href = '<?php echo File::fileDirection("/hunts/".$hunt->getHunt_Id()."/playNext") ?>';
+        })
     </script>
 </section>

@@ -113,5 +113,18 @@ class ModelAttempts extends Model{
         $name = $user->getUsername();
         return $name;
     }
+
+    public function addPoints() {
+        $this->score += 10;
+    }
+
+    public function getNextQuestionId() {
+        return ($this->score/10);
+    }
+
+    public function finish() {
+        $this->win = true;
+        $this->attempt_time -= date('H:i:s');
+    }
 }
 ?>
